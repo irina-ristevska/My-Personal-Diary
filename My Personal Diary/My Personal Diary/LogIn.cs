@@ -111,9 +111,10 @@ namespace My_Personal_Diary
         {
             string username = tbUsername.Text;
             string url = UserBase.GetDiaryFile();
-            this.Hide();
             Diary.setDiaryFile(url, username);
+            Diary.helloMessage();
             Diary.ShowDialog();
+            this.Close();
         }
        
     }

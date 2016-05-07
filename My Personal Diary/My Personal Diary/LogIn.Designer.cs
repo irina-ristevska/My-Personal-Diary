@@ -32,8 +32,6 @@
             this.btnSignUp = new System.Windows.Forms.Button();
             this.btnLogIn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.pbPassIcon = new System.Windows.Forms.PictureBox();
-            this.pbUserIcon = new System.Windows.Forms.PictureBox();
             this.pnlUsername = new System.Windows.Forms.Panel();
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.pnlPassword = new System.Windows.Forms.Panel();
@@ -41,13 +39,15 @@
             this.pnlMessage = new System.Windows.Forms.Panel();
             this.lblMessage = new System.Windows.Forms.Label();
             this.pbLogo = new System.Windows.Forms.PictureBox();
+            this.pbPassIcon = new System.Windows.Forms.PictureBox();
+            this.pbUserIcon = new System.Windows.Forms.PictureBox();
             this.pnlBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPassIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbUserIcon)).BeginInit();
             this.pnlUsername.SuspendLayout();
             this.pnlPassword.SuspendLayout();
             this.pnlMessage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPassIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlBox
@@ -103,24 +103,6 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Enter your Diary account";
             // 
-            // pbPassIcon
-            // 
-            this.pbPassIcon.BackgroundImage = global::My_Personal_Diary.Properties.Resources.Pass_Icon1;
-            this.pbPassIcon.Location = new System.Drawing.Point(15, 181);
-            this.pbPassIcon.Name = "pbPassIcon";
-            this.pbPassIcon.Size = new System.Drawing.Size(60, 60);
-            this.pbPassIcon.TabIndex = 4;
-            this.pbPassIcon.TabStop = false;
-            // 
-            // pbUserIcon
-            // 
-            this.pbUserIcon.BackgroundImage = global::My_Personal_Diary.Properties.Resources.User_Icon;
-            this.pbUserIcon.Location = new System.Drawing.Point(15, 95);
-            this.pbUserIcon.Name = "pbUserIcon";
-            this.pbUserIcon.Size = new System.Drawing.Size(60, 60);
-            this.pbUserIcon.TabIndex = 3;
-            this.pbUserIcon.TabStop = false;
-            // 
             // pnlUsername
             // 
             this.pnlUsername.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -167,6 +149,7 @@
             this.tbPassword.Size = new System.Drawing.Size(229, 23);
             this.tbPassword.TabIndex = 0;
             this.tbPassword.Text = "Password";
+            this.tbPassword.UseSystemPasswordChar = true;
             this.tbPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPassword_KeyPress);
             // 
             // pnlMessage
@@ -194,13 +177,31 @@
             // pbLogo
             // 
             this.pbLogo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pbLogo.BackgroundImage = global::My_Personal_Diary.Properties.Resources.Logo;
+            this.pbLogo.BackgroundImage = global::My_Personal_Diary.Properties.Resources.LogoWhite;
             this.pbLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pbLogo.Location = new System.Drawing.Point(73, 27);
+            this.pbLogo.Location = new System.Drawing.Point(73, 6);
             this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(340, 104);
+            this.pbLogo.Size = new System.Drawing.Size(340, 130);
             this.pbLogo.TabIndex = 1;
             this.pbLogo.TabStop = false;
+            // 
+            // pbPassIcon
+            // 
+            this.pbPassIcon.BackgroundImage = global::My_Personal_Diary.Properties.Resources.Pass_Icon;
+            this.pbPassIcon.Location = new System.Drawing.Point(15, 181);
+            this.pbPassIcon.Name = "pbPassIcon";
+            this.pbPassIcon.Size = new System.Drawing.Size(60, 60);
+            this.pbPassIcon.TabIndex = 4;
+            this.pbPassIcon.TabStop = false;
+            // 
+            // pbUserIcon
+            // 
+            this.pbUserIcon.BackgroundImage = global::My_Personal_Diary.Properties.Resources.User_Icon;
+            this.pbUserIcon.Location = new System.Drawing.Point(15, 95);
+            this.pbUserIcon.Name = "pbUserIcon";
+            this.pbUserIcon.Size = new System.Drawing.Size(60, 60);
+            this.pbUserIcon.TabIndex = 3;
+            this.pbUserIcon.TabStop = false;
             // 
             // LogIn
             // 
@@ -216,8 +217,6 @@
             this.Text = "Log In";
             this.pnlBox.ResumeLayout(false);
             this.pnlBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPassIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbUserIcon)).EndInit();
             this.pnlUsername.ResumeLayout(false);
             this.pnlUsername.PerformLayout();
             this.pnlPassword.ResumeLayout(false);
@@ -225,6 +224,8 @@
             this.pnlMessage.ResumeLayout(false);
             this.pnlMessage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPassIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserIcon)).EndInit();
             this.ResumeLayout(false);
 
         }

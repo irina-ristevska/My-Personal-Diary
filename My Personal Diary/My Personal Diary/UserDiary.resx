@@ -117,4 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pbCalendarIcon.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAD1SURBVEhL3VaJCcMwEOsI2cWLdKRslhEySkdoT4fO
+        Tc7PtdihUIFAinU6CAn41kJK6QHShvg2nyFDT5A2RJiXw0W4WdDCNd1ikEf3goenJWAwWPCD/NYquQv1
+        nVPXMkeG+daiXYgBELqWOTLMh69lFv94Eb6WK/D7ReZHybr+IkqF90CU8X3qsyCc7v1DO2OnGeDoLf8W
+        hPlRsq6/iLI4M/RmAH+mPguiGnLozQD+TH0WRDXk0JsB/Jn6LAjzo2RdfxEl9LVfHaXCeyDK+D71WRDm
+        R8m69qLZKBYJV55NgfTh0rNaPx4Ul5MLqJeT4ro1mdKdlhdrtJGOYxxtKwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="toolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

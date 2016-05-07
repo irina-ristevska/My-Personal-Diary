@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,10 +24,53 @@ namespace My_Personal_Diary
 
         public UserDiary()
         {
-            InitializeComponent();
+
            
+            int height = Screen.PrimaryScreen.Bounds.Height;
+            int width = Screen.PrimaryScreen.Bounds.Width;
+            this.Height = height;
+            this.Width = width;
+            this.WindowState = FormWindowState.Maximized;
+            InitializeComponent();
+            monthCalendar.TitleBackColor = System.Drawing.Color.Blue;
+
+            fillFontSize();
+            
         }
 
-        
+        private void toolStripButton1_Click(object sender, EventArgs e) // Bold funkcija
+        {
+            Font Bold = new Font(rtEditorDiary.SelectionFont.FontFamily, rtEditorDiary.SelectionFont.SizeInPoints, FontStyle.Bold);
+            Font Regular = new Font(rtEditorDiary.SelectionFont.FontFamily, rtEditorDiary.SelectionFont.SizeInPoints, FontStyle.Regular);
+
+            if(rtEditorDiary.SelectionFont.Bold)
+            {
+                rtEditorDiary.SelectionFont = Regular;
+            }
+            else
+            { rtEditorDiary.SelectionFont = Bold; }
+        }
+
+        private void fillFontSize()
+        {
+            for (int i = 2; i < 73; i += 4)
+            {
+                ddlSizePick.Items.Add(i);
+            }
+
+            ddlSizePick.SelectedIndex = 3;
+
+        }
+
+        public void helloMessage()
+        {
+            lblHelloMessage.Text = "Hello, " + UserName + "!\nWelcome back.";
+
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+         
+        }
     }
 }
