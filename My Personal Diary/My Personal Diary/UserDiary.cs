@@ -247,7 +247,11 @@ namespace My_Personal_Diary
             LogIn l = new LogIn();
             l.Show();
         }
-
+        /// <summary>
+        /// ...
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lbThisDateEntries_DoubleClick(object sender, EventArgs e)
         {
             try
