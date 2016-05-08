@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace My_Personal_Diary
 {
-    class Rimander
+    class Reminder
     {
         public DateTime Date { get; set; }
         public String Note { get; set; }
 
-        public Rimander ()
+        public Reminder ()
         {
 
         }

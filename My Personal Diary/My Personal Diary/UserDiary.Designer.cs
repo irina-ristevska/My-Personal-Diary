@@ -43,6 +43,7 @@
             this.monthCalendar = new System.Windows.Forms.MonthCalendar();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pbCalendarIcon = new System.Windows.Forms.PictureBox();
+            this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
@@ -65,7 +66,6 @@
             this.tbTitle = new System.Windows.Forms.TextBox();
             this.lblDateNewEntry = new System.Windows.Forms.Label();
             this.cdColor = new System.Windows.Forms.ColorDialog();
-            this.btnClose = new System.Windows.Forms.Button();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.panel1.SuspendLayout();
@@ -261,6 +261,23 @@
             this.pbCalendarIcon.TabIndex = 5;
             this.pbCalendarIcon.TabStop = false;
             // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(233)))), ((int)(((byte)(216)))));
+            this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(199)))), ((int)(((byte)(176)))));
+            this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(199)))), ((int)(((byte)(176)))));
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.Black;
+            this.btnClose.Location = new System.Drawing.Point(567, 46);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(93, 31);
+            this.btnClose.TabIndex = 4;
+            this.btnClose.Text = "Close entry";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -320,7 +337,7 @@
             this.tsBold.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsBold.Name = "tsBold";
             this.tsBold.Size = new System.Drawing.Size(23, 37);
-            this.tsBold.Text = "tsbBold";
+            this.tsBold.Text = "Make your text bold";
             this.tsBold.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // tsItalic
@@ -330,7 +347,7 @@
             this.tsItalic.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsItalic.Name = "tsItalic";
             this.tsItalic.Size = new System.Drawing.Size(23, 37);
-            this.tsItalic.Text = "tsbItalic";
+            this.tsItalic.Text = "Make your text italic";
             this.tsItalic.Click += new System.EventHandler(this.tsItalic_Click);
             // 
             // tsUnderline
@@ -340,7 +357,7 @@
             this.tsUnderline.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsUnderline.Name = "tsUnderline";
             this.tsUnderline.Size = new System.Drawing.Size(23, 37);
-            this.tsUnderline.Text = "tsbUnderline";
+            this.tsUnderline.Text = "Make your text underlined";
             this.tsUnderline.Click += new System.EventHandler(this.tsUnderline_Click);
             // 
             // toolStripLabel2
@@ -367,7 +384,7 @@
             this.tsbFontColor.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbFontColor.Name = "tsbFontColor";
             this.tsbFontColor.Size = new System.Drawing.Size(23, 37);
-            this.tsbFontColor.Text = "toolStripButton4";
+            this.tsbFontColor.Text = "Change the color of your text";
             this.tsbFontColor.Click += new System.EventHandler(this.tsbFontColor_Click);
             this.tsbFontColor.EnabledChanged += new System.EventHandler(this.tsbFontColor_EnabledChanged);
             // 
@@ -378,7 +395,8 @@
             this.tsbFontHighLighter.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbFontHighLighter.Name = "tsbFontHighLighter";
             this.tsbFontHighLighter.Size = new System.Drawing.Size(23, 37);
-            this.tsbFontHighLighter.Text = "toolStripButton5";
+            this.tsbFontHighLighter.Text = "Highlight your text";
+            this.tsbFontHighLighter.Click += new System.EventHandler(this.tsbFontHighLighter_Click);
             // 
             // toolStripLabel4
             // 
@@ -433,7 +451,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtEditorDiary.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtEditorDiary.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtEditorDiary.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.rtEditorDiary.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(230)))), ((int)(((byte)(149)))), ((int)(((byte)(118)))));
             this.rtEditorDiary.Location = new System.Drawing.Point(18, 137);
             this.rtEditorDiary.Name = "rtEditorDiary";
             this.rtEditorDiary.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
@@ -447,12 +465,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTitle.ForeColor = System.Drawing.Color.Salmon;
+            this.tbTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(149)))), ((int)(((byte)(118)))));
             this.tbTitle.Location = new System.Drawing.Point(18, 90);
             this.tbTitle.Name = "tbTitle";
             this.tbTitle.Size = new System.Drawing.Size(642, 23);
             this.tbTitle.TabIndex = 2;
-            this.tbTitle.Text = "Diary Title";
+            this.tbTitle.Text = "  Diary Title";
             this.tbTitle.Click += new System.EventHandler(this.tbTitle_Click);
             this.tbTitle.Validating += new System.ComponentModel.CancelEventHandler(this.tbTitle_Validating);
             // 
@@ -460,7 +478,7 @@
             // 
             this.lblDateNewEntry.AutoSize = true;
             this.lblDateNewEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateNewEntry.ForeColor = System.Drawing.Color.Salmon;
+            this.lblDateNewEntry.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(149)))), ((int)(((byte)(118)))));
             this.lblDateNewEntry.Location = new System.Drawing.Point(47, 54);
             this.lblDateNewEntry.Name = "lblDateNewEntry";
             this.lblDateNewEntry.Size = new System.Drawing.Size(84, 20);
@@ -470,22 +488,6 @@
             // cdColor
             // 
             this.cdColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.BackColor = System.Drawing.Color.Transparent;
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(162)))), ((int)(((byte)(184)))));
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ForeColor = System.Drawing.Color.Black;
-            this.btnClose.Location = new System.Drawing.Point(567, 46);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(93, 31);
-            this.btnClose.TabIndex = 4;
-            this.btnClose.Text = "Close entry";
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // UserDiary
             // 

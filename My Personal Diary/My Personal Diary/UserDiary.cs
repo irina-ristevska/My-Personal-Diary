@@ -43,9 +43,11 @@ namespace My_Personal_Diary
             monthCalendar.TitleBackColor = System.Drawing.Color.Blue;
 
             fillFontSize();
+            fillFontFamily();
+
             lblPickDateListBox.Text = monthCalendar.SelectionStart.ToShortDateString();
             doc = new Document();
-            doc.addFonts(ddlFontPicker);
+            
             this.rtEditorDiary.ForeColor = cdColor.Color;
             fileName = null;
         }
@@ -73,6 +75,15 @@ namespace My_Personal_Diary
             ddlSizePick.SelectedIndex = 3;
 
         }
+        private void fillFontFamily()
+        {
+            foreach (FontFamily fontFamily in FontFamily.Families)
+            {
+                ddlFontPicker.Items.Add(fontFamily.Name.ToString());
+                ddlFontPicker.SelectedIndex = 0;
+            }
+        }
+
 
         public void helloMessage()
         {
@@ -106,7 +117,7 @@ namespace My_Personal_Diary
         {
             tbTitle.Text = "Diary Title";
             rtEditorDiary.Text = "";
-            cdColor.Color = Color.Blue;
+            cdColor.Color = Color.FromArgb(0, 230, 149, 118);
             rtEditorDiary.Font = new Font(rtEditorDiary.SelectionFont.FontFamily, rtEditorDiary.SelectionFont.SizeInPoints, rtEditorDiary.Font.Style | FontStyle.Regular);
 
         }
@@ -165,17 +176,21 @@ namespace My_Personal_Diary
             doc.findAndShowEntrysOnThisDate(lblPickDateListBox.Text, lbThisDateEntries);
         }
 
-        private void ddlFontPicker_SelectedIndexChanged(object sender, EventArgs e)
+        private void ddlFontPicker_SelectedIndexChanged(object sender, EventArgs e) // fixed
         {
-            ///does not work
             String familyName = ddlFontPicker.SelectedItem.ToString();
-            Font f = new Font(familyName, 14);
+            FontFamily ff = new FontFamily(familyName);
+            Font f = new Font( ff , rtEditorDiary.SelectionFont.Size, rtEditorDiary.SelectionFont.Style);
             rtEditorDiary.SelectionFont = f;
         }
 
-        private void ddlSizePick_SelectedIndexChanged(object sender, EventArgs e)
+        private void ddlSizePick_SelectedIndexChanged(object sender, EventArgs e) // Implementirano 
         {
-            //change the font size
+            float size = rtEditorDiary.SelectionFont.SizeInPoints;
+            float newSize = 14;
+            float.TryParse(ddlSizePick.SelectedItem.ToString(), out newSize);
+            Font newFont = new Font(rtEditorDiary.SelectionFont.Name, newSize, rtEditorDiary.SelectionFont.Style);
+            rtEditorDiary.SelectionFont = newFont;
         }
 
         private void tsbFontColor_Click(object sender, EventArgs e)
@@ -188,6 +203,12 @@ namespace My_Personal_Diary
         private void tsbFontColor_EnabledChanged(object sender, EventArgs e)
         {
             this.rtEditorDiary.ForeColor = cdColor.Color;
+        }
+
+        private void tsbFontHighLighter_Click(object sender, EventArgs e) 
+        {
+            cdColor.ShowDialog();
+            this.rtEditorDiary.SelectionBackColor = cdColor.Color;
         }
 
         /// <summary>
@@ -265,5 +286,7 @@ namespace My_Personal_Diary
             catch (Exception ex)
             { }
         }
+
+       
     }
 }

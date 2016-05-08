@@ -18,3 +18,13 @@ C:\Program Files\Git\My Personal Diary\My Personal Diary\My Personal Diary\obj\D
 C:\Program Files\Git\My Personal Diary\My Personal Diary\My Personal Diary\obj\Debug\My_Personal_Diary.Properties.Resources.resources
 C:\Program Files\Git\My Personal Diary\My Personal Diary\My Personal Diary\obj\Debug\My_Personal_Diary.UserDiary.resources
 C:\Program Files\Git\My Personal Diary\My Personal Diary\My Personal Diary\obj\Debug\My Personal Diary.csproj.GenerateResource.Cache
+C:\Users\Lena\MyPersonalDiaryRepo\My Personal Diary\My Personal Diary\bin\Debug\My Personal Diary.exe.config
+C:\Users\Lena\MyPersonalDiaryRepo\My Personal Diary\My Personal Diary\obj\Debug\My Personal Diary.exe
+C:\Users\Lena\MyPersonalDiaryRepo\My Personal Diary\My Personal Diary\obj\Debug\My Personal Diary.pdb
+C:\Users\Lena\MyPersonalDiaryRepo\My Personal Diary\My Personal Diary\bin\Debug\My Personal Diary.exe
+C:\Users\Lena\MyPersonalDiaryRepo\My Personal Diary\My Personal Diary\bin\Debug\My Personal Diary.pdb
+C:\Users\Lena\MyPersonalDiaryRepo\My Personal Diary\My Personal Diary\obj\Debug\My Personal Diary.csprojResolveAssemblyReference.cache
+C:\Users\Lena\MyPersonalDiaryRepo\My Personal Diary\My Personal Diary\obj\Debug\My_Personal_Diary.LogIn.resources
+C:\Users\Lena\MyPersonalDiaryRepo\My Personal Diary\My Personal Diary\obj\Debug\My_Personal_Diary.Properties.Resources.resources
+C:\Users\Lena\MyPersonalDiaryRepo\My Personal Diary\My Personal Diary\obj\Debug\My_Personal_Diary.UserDiary.resources
+C:\Users\Lena\MyPersonalDiaryRepo\My Personal Diary\My Personal Diary\obj\Debug\My Personal Diary.csproj.GenerateResource.Cache
