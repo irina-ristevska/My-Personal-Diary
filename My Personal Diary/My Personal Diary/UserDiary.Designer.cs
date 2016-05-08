@@ -33,14 +33,27 @@
             this.btnReminder = new System.Windows.Forms.Button();
             this.btnEntry = new System.Windows.Forms.Button();
             this.btnLogOut = new System.Windows.Forms.Button();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlListBox = new System.Windows.Forms.Panel();
+            this.lblPickDateListBox = new System.Windows.Forms.Label();
+            this.lbThisDateEntries = new System.Windows.Forms.ListBox();
+            this.lblHelloMessage = new System.Windows.Forms.Label();
+            this.pbUserIcon = new System.Windows.Forms.PictureBox();
             this.monthCalendar = new System.Windows.Forms.MonthCalendar();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.pbCalendarIcon = new System.Windows.Forms.PictureBox();
+            this.btnSave = new System.Windows.Forms.Button();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.tsBold = new System.Windows.Forms.ToolStripButton();
+            this.tsItalic = new System.Windows.Forms.ToolStripButton();
+            this.tsUnderline = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
+            this.tsbFontColor = new System.Windows.Forms.ToolStripButton();
+            this.tsbFontHighLighter = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel5 = new System.Windows.Forms.ToolStripLabel();
@@ -51,27 +64,16 @@
             this.rtEditorDiary = new System.Windows.Forms.RichTextBox();
             this.tbTitle = new System.Windows.Forms.TextBox();
             this.lblDateNewEntry = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.lblHelloMessage = new System.Windows.Forms.Label();
-            this.lbThisDateEntries = new System.Windows.Forms.ListBox();
-            this.pnlListBox = new System.Windows.Forms.Panel();
-            this.lblPickDateListBox = new System.Windows.Forms.Label();
-            this.pbCalendarIcon = new System.Windows.Forms.PictureBox();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.tsbFontColor = new System.Windows.Forms.ToolStripButton();
-            this.tsbFontHighLighter = new System.Windows.Forms.ToolStripButton();
-            this.pbUserIcon = new System.Windows.Forms.PictureBox();
-            this.pbLogo = new System.Windows.Forms.PictureBox();
+            this.cdColor = new System.Windows.Forms.ColorDialog();
+            this.btnClose = new System.Windows.Forms.Button();
             this.pnlTop.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.toolStrip.SuspendLayout();
-            this.pnlListBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCalendarIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbUserIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.pnlListBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserIcon)).BeginInit();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCalendarIcon)).BeginInit();
+            this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlTop
@@ -116,6 +118,7 @@
             this.btnEntry.TabIndex = 2;
             this.btnEntry.Text = "+ Entry";
             this.btnEntry.UseVisualStyleBackColor = false;
+            this.btnEntry.Click += new System.EventHandler(this.btnEntry_Click);
             // 
             // btnLogOut
             // 
@@ -131,6 +134,17 @@
             this.btnLogOut.TabIndex = 1;
             this.btnLogOut.Text = "Log out";
             this.btnLogOut.UseVisualStyleBackColor = false;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
+            // 
+            // pbLogo
+            // 
+            this.pbLogo.Image = global::My_Personal_Diary.Properties.Resources.LogoSmall;
+            this.pbLogo.InitialImage = null;
+            this.pbLogo.Location = new System.Drawing.Point(9, 4);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(131, 50);
+            this.pbLogo.TabIndex = 0;
+            this.pbLogo.TabStop = false;
             // 
             // panel1
             // 
@@ -146,6 +160,65 @@
             this.panel1.Size = new System.Drawing.Size(255, 403);
             this.panel1.TabIndex = 0;
             // 
+            // pnlListBox
+            // 
+            this.pnlListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlListBox.BackColor = System.Drawing.Color.Firebrick;
+            this.pnlListBox.Controls.Add(this.lblPickDateListBox);
+            this.pnlListBox.Location = new System.Drawing.Point(14, 251);
+            this.pnlListBox.Name = "pnlListBox";
+            this.pnlListBox.Size = new System.Drawing.Size(227, 27);
+            this.pnlListBox.TabIndex = 4;
+            // 
+            // lblPickDateListBox
+            // 
+            this.lblPickDateListBox.AutoSize = true;
+            this.lblPickDateListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPickDateListBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblPickDateListBox.Location = new System.Drawing.Point(4, 4);
+            this.lblPickDateListBox.Name = "lblPickDateListBox";
+            this.lblPickDateListBox.Size = new System.Drawing.Size(247, 20);
+            this.lblPickDateListBox.TabIndex = 0;
+            this.lblPickDateListBox.Text = "Selected Date // On calendar click";
+            // 
+            // lbThisDateEntries
+            // 
+            this.lbThisDateEntries.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(233)))), ((int)(((byte)(216)))));
+            this.lbThisDateEntries.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbThisDateEntries.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbThisDateEntries.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lbThisDateEntries.FormattingEnabled = true;
+            this.lbThisDateEntries.ItemHeight = 18;
+            this.lbThisDateEntries.Location = new System.Drawing.Point(14, 275);
+            this.lbThisDateEntries.Name = "lbThisDateEntries";
+            this.lbThisDateEntries.Size = new System.Drawing.Size(227, 128);
+            this.lbThisDateEntries.TabIndex = 3;
+            this.lbThisDateEntries.DoubleClick += new System.EventHandler(this.lbThisDateEntries_DoubleClick);
+            // 
+            // lblHelloMessage
+            // 
+            this.lblHelloMessage.AutoSize = true;
+            this.lblHelloMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHelloMessage.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblHelloMessage.Location = new System.Drawing.Point(76, 14);
+            this.lblHelloMessage.Name = "lblHelloMessage";
+            this.lblHelloMessage.Size = new System.Drawing.Size(117, 40);
+            this.lblHelloMessage.TabIndex = 2;
+            this.lblHelloMessage.Text = "Hello, User!\r\nWelcome back.\r\n";
+            // 
+            // pbUserIcon
+            // 
+            this.pbUserIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbUserIcon.Image = global::My_Personal_Diary.Properties.Resources.User_Icon;
+            this.pbUserIcon.InitialImage = null;
+            this.pbUserIcon.Location = new System.Drawing.Point(14, 14);
+            this.pbUserIcon.Name = "pbUserIcon";
+            this.pbUserIcon.Size = new System.Drawing.Size(56, 50);
+            this.pbUserIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbUserIcon.TabIndex = 1;
+            this.pbUserIcon.TabStop = false;
+            // 
             // monthCalendar
             // 
             this.monthCalendar.BackColor = System.Drawing.Color.Maroon;
@@ -153,9 +226,12 @@
             this.monthCalendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.monthCalendar.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.monthCalendar.Location = new System.Drawing.Point(14, 71);
+            this.monthCalendar.MaxSelectionCount = 1;
             this.monthCalendar.Name = "monthCalendar";
             this.monthCalendar.TabIndex = 0;
             this.monthCalendar.TitleBackColor = System.Drawing.Color.Maroon;
+            this.monthCalendar.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_DateChanged);
+            this.monthCalendar.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_DateSelected);
             // 
             // panel3
             // 
@@ -164,6 +240,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(233)))), ((int)(((byte)(216)))));
             this.panel3.Controls.Add(this.pbCalendarIcon);
+            this.panel3.Controls.Add(this.btnClose);
             this.panel3.Controls.Add(this.btnSave);
             this.panel3.Controls.Add(this.toolStrip);
             this.panel3.Controls.Add(this.rtEditorDiary);
@@ -175,15 +252,41 @@
             this.panel3.Size = new System.Drawing.Size(672, 403);
             this.panel3.TabIndex = 2;
             // 
+            // pbCalendarIcon
+            // 
+            this.pbCalendarIcon.Image = ((System.Drawing.Image)(resources.GetObject("pbCalendarIcon.Image")));
+            this.pbCalendarIcon.Location = new System.Drawing.Point(18, 51);
+            this.pbCalendarIcon.Name = "pbCalendarIcon";
+            this.pbCalendarIcon.Size = new System.Drawing.Size(26, 26);
+            this.pbCalendarIcon.TabIndex = 5;
+            this.pbCalendarIcon.TabStop = false;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(143)))), ((int)(((byte)(163)))));
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(162)))), ((int)(((byte)(184)))));
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Location = new System.Drawing.Point(567, 3);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(93, 31);
+            this.btnSave.TabIndex = 4;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // toolStrip
             // 
             this.toolStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(143)))), ((int)(((byte)(163)))));
             this.toolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
-            this.toolStripButton1,
-            this.toolStripButton2,
-            this.toolStripButton3,
+            this.tsBold,
+            this.tsItalic,
+            this.tsUnderline,
             this.toolStripLabel2,
             this.toolStripSeparator1,
             this.toolStripLabel3,
@@ -210,6 +313,36 @@
             this.toolStripLabel1.Size = new System.Drawing.Size(24, 37);
             this.toolStripLabel1.Text = " ";
             // 
+            // tsBold
+            // 
+            this.tsBold.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsBold.Image = global::My_Personal_Diary.Properties.Resources.bold;
+            this.tsBold.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBold.Name = "tsBold";
+            this.tsBold.Size = new System.Drawing.Size(23, 37);
+            this.tsBold.Text = "tsbBold";
+            this.tsBold.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // tsItalic
+            // 
+            this.tsItalic.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsItalic.Image = global::My_Personal_Diary.Properties.Resources.italicc;
+            this.tsItalic.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsItalic.Name = "tsItalic";
+            this.tsItalic.Size = new System.Drawing.Size(23, 37);
+            this.tsItalic.Text = "tsbItalic";
+            this.tsItalic.Click += new System.EventHandler(this.tsItalic_Click);
+            // 
+            // tsUnderline
+            // 
+            this.tsUnderline.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsUnderline.Image = global::My_Personal_Diary.Properties.Resources.underline;
+            this.tsUnderline.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsUnderline.Name = "tsUnderline";
+            this.tsUnderline.Size = new System.Drawing.Size(23, 37);
+            this.tsUnderline.Text = "tsbUnderline";
+            this.tsUnderline.Click += new System.EventHandler(this.tsUnderline_Click);
+            // 
             // toolStripLabel2
             // 
             this.toolStripLabel2.Name = "toolStripLabel2";
@@ -226,6 +359,26 @@
             this.toolStripLabel3.Name = "toolStripLabel3";
             this.toolStripLabel3.Size = new System.Drawing.Size(10, 37);
             this.toolStripLabel3.Text = " ";
+            // 
+            // tsbFontColor
+            // 
+            this.tsbFontColor.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbFontColor.Image = global::My_Personal_Diary.Properties.Resources.color;
+            this.tsbFontColor.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbFontColor.Name = "tsbFontColor";
+            this.tsbFontColor.Size = new System.Drawing.Size(23, 37);
+            this.tsbFontColor.Text = "toolStripButton4";
+            this.tsbFontColor.Click += new System.EventHandler(this.tsbFontColor_Click);
+            this.tsbFontColor.EnabledChanged += new System.EventHandler(this.tsbFontColor_EnabledChanged);
+            // 
+            // tsbFontHighLighter
+            // 
+            this.tsbFontHighLighter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbFontHighLighter.Image = global::My_Personal_Diary.Properties.Resources.highlight;
+            this.tsbFontHighLighter.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbFontHighLighter.Name = "tsbFontHighLighter";
+            this.tsbFontHighLighter.Size = new System.Drawing.Size(23, 37);
+            this.tsbFontHighLighter.Text = "toolStripButton5";
             // 
             // toolStripLabel4
             // 
@@ -250,6 +403,7 @@
             this.ddlFontPicker.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.ddlFontPicker.Name = "ddlFontPicker";
             this.ddlFontPicker.Size = new System.Drawing.Size(150, 40);
+            this.ddlFontPicker.SelectedIndexChanged += new System.EventHandler(this.ddlFontPicker_SelectedIndexChanged);
             // 
             // toolStripLabel6
             // 
@@ -263,6 +417,7 @@
             this.ddlSizePick.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.ddlSizePick.Name = "ddlSizePick";
             this.ddlSizePick.Size = new System.Drawing.Size(75, 40);
+            this.ddlSizePick.SelectedIndexChanged += new System.EventHandler(this.ddlSizePick_SelectedIndexChanged);
             // 
             // toolStripLabel8
             // 
@@ -272,11 +427,13 @@
             // 
             // rtEditorDiary
             // 
+            this.rtEditorDiary.AcceptsTab = true;
             this.rtEditorDiary.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtEditorDiary.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtEditorDiary.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtEditorDiary.ForeColor = System.Drawing.SystemColors.WindowText;
             this.rtEditorDiary.Location = new System.Drawing.Point(18, 137);
             this.rtEditorDiary.Name = "rtEditorDiary";
             this.rtEditorDiary.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
@@ -289,13 +446,15 @@
             this.tbTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbTitle.ForeColor = System.Drawing.Color.Salmon;
             this.tbTitle.Location = new System.Drawing.Point(18, 90);
             this.tbTitle.Name = "tbTitle";
             this.tbTitle.Size = new System.Drawing.Size(642, 23);
             this.tbTitle.TabIndex = 2;
-            this.tbTitle.Text = " Diary Title";
+            this.tbTitle.Text = "Diary Title";
+            this.tbTitle.Click += new System.EventHandler(this.tbTitle_Click);
+            this.tbTitle.Validating += new System.ComponentModel.CancelEventHandler(this.tbTitle_Validating);
             // 
             // lblDateNewEntry
             // 
@@ -304,145 +463,29 @@
             this.lblDateNewEntry.ForeColor = System.Drawing.Color.Salmon;
             this.lblDateNewEntry.Location = new System.Drawing.Point(47, 54);
             this.lblDateNewEntry.Name = "lblDateNewEntry";
-            this.lblDateNewEntry.Size = new System.Drawing.Size(139, 20);
+            this.lblDateNewEntry.Size = new System.Drawing.Size(84, 20);
             this.lblDateNewEntry.TabIndex = 1;
-            this.lblDateNewEntry.Text = "6.6.2016 Saturday";
+            this.lblDateNewEntry.Text = "08-May-16";
             // 
-            // btnSave
+            // cdColor
             // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(143)))), ((int)(((byte)(163)))));
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(162)))), ((int)(((byte)(184)))));
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(567, 3);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(93, 31);
-            this.btnSave.TabIndex = 4;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.cdColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             // 
-            // lblHelloMessage
+            // btnClose
             // 
-            this.lblHelloMessage.AutoSize = true;
-            this.lblHelloMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHelloMessage.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblHelloMessage.Location = new System.Drawing.Point(76, 14);
-            this.lblHelloMessage.Name = "lblHelloMessage";
-            this.lblHelloMessage.Size = new System.Drawing.Size(117, 40);
-            this.lblHelloMessage.TabIndex = 2;
-            this.lblHelloMessage.Text = "Hello, User!\r\nWelcome back.\r\n";
-            // 
-            // lbThisDateEntries
-            // 
-            this.lbThisDateEntries.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(233)))), ((int)(((byte)(216)))));
-            this.lbThisDateEntries.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lbThisDateEntries.FormattingEnabled = true;
-            this.lbThisDateEntries.Location = new System.Drawing.Point(14, 272);
-            this.lbThisDateEntries.Name = "lbThisDateEntries";
-            this.lbThisDateEntries.Size = new System.Drawing.Size(227, 104);
-            this.lbThisDateEntries.TabIndex = 3;
-            // 
-            // pnlListBox
-            // 
-            this.pnlListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlListBox.BackColor = System.Drawing.Color.Firebrick;
-            this.pnlListBox.Controls.Add(this.lblPickDateListBox);
-            this.pnlListBox.Location = new System.Drawing.Point(14, 251);
-            this.pnlListBox.Name = "pnlListBox";
-            this.pnlListBox.Size = new System.Drawing.Size(227, 21);
-            this.pnlListBox.TabIndex = 4;
-            // 
-            // lblPickDateListBox
-            // 
-            this.lblPickDateListBox.AutoSize = true;
-            this.lblPickDateListBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblPickDateListBox.Location = new System.Drawing.Point(4, 4);
-            this.lblPickDateListBox.Name = "lblPickDateListBox";
-            this.lblPickDateListBox.Size = new System.Drawing.Size(174, 13);
-            this.lblPickDateListBox.TabIndex = 0;
-            this.lblPickDateListBox.Text = "Selected Date // On calendar click";
-            // 
-            // pbCalendarIcon
-            // 
-            this.pbCalendarIcon.Image = ((System.Drawing.Image)(resources.GetObject("pbCalendarIcon.Image")));
-            this.pbCalendarIcon.Location = new System.Drawing.Point(18, 51);
-            this.pbCalendarIcon.Name = "pbCalendarIcon";
-            this.pbCalendarIcon.Size = new System.Drawing.Size(26, 26);
-            this.pbCalendarIcon.TabIndex = 5;
-            this.pbCalendarIcon.TabStop = false;
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::My_Personal_Diary.Properties.Resources.bold;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 37);
-            this.toolStripButton1.Text = "tsbBold";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::My_Personal_Diary.Properties.Resources.italicc;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 37);
-            this.toolStripButton2.Text = "tsbItalic";
-            // 
-            // toolStripButton3
-            // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = global::My_Personal_Diary.Properties.Resources.underline;
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(23, 37);
-            this.toolStripButton3.Text = "tsbUnderline";
-            // 
-            // tsbFontColor
-            // 
-            this.tsbFontColor.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbFontColor.Image = global::My_Personal_Diary.Properties.Resources.color;
-            this.tsbFontColor.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbFontColor.Name = "tsbFontColor";
-            this.tsbFontColor.Size = new System.Drawing.Size(23, 37);
-            this.tsbFontColor.Text = "toolStripButton4";
-            // 
-            // tsbFontHighLighter
-            // 
-            this.tsbFontHighLighter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbFontHighLighter.Image = global::My_Personal_Diary.Properties.Resources.highlight;
-            this.tsbFontHighLighter.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbFontHighLighter.Name = "tsbFontHighLighter";
-            this.tsbFontHighLighter.Size = new System.Drawing.Size(23, 37);
-            this.tsbFontHighLighter.Text = "toolStripButton5";
-            // 
-            // pbUserIcon
-            // 
-            this.pbUserIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbUserIcon.Image = global::My_Personal_Diary.Properties.Resources.User_Icon;
-            this.pbUserIcon.InitialImage = null;
-            this.pbUserIcon.Location = new System.Drawing.Point(14, 14);
-            this.pbUserIcon.Name = "pbUserIcon";
-            this.pbUserIcon.Size = new System.Drawing.Size(56, 50);
-            this.pbUserIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbUserIcon.TabIndex = 1;
-            this.pbUserIcon.TabStop = false;
-            // 
-            // pbLogo
-            // 
-            this.pbLogo.Image = global::My_Personal_Diary.Properties.Resources.LogoSmall;
-            this.pbLogo.InitialImage = null;
-            this.pbLogo.Location = new System.Drawing.Point(9, 4);
-            this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(131, 50);
-            this.pbLogo.TabIndex = 0;
-            this.pbLogo.TabStop = false;
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(162)))), ((int)(((byte)(184)))));
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.Black;
+            this.btnClose.Location = new System.Drawing.Point(567, 46);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(93, 31);
+            this.btnClose.TabIndex = 4;
+            this.btnClose.Text = "Close entry";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // UserDiary
             // 
@@ -455,18 +498,19 @@
             this.Controls.Add(this.pnlTop);
             this.Name = "UserDiary";
             this.Text = "UserDiary";
+            this.Load += new System.EventHandler(this.UserDiary_Load);
             this.pnlTop.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.toolStrip.ResumeLayout(false);
-            this.toolStrip.PerformLayout();
             this.pnlListBox.ResumeLayout(false);
             this.pnlListBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCalendarIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbUserIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCalendarIcon)).EndInit();
+            this.toolStrip.ResumeLayout(false);
+            this.toolStrip.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -487,9 +531,9 @@
         private System.Windows.Forms.RichTextBox rtEditorDiary;
         private System.Windows.Forms.ToolStrip toolStrip;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton tsBold;
+        private System.Windows.Forms.ToolStripButton tsItalic;
+        private System.Windows.Forms.ToolStripButton tsUnderline;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel3;
@@ -508,5 +552,7 @@
         private System.Windows.Forms.Panel pnlListBox;
         private System.Windows.Forms.Label lblPickDateListBox;
         private System.Windows.Forms.PictureBox pbCalendarIcon;
+        private System.Windows.Forms.ColorDialog cdColor;
+        private System.Windows.Forms.Button btnClose;
     }
 }

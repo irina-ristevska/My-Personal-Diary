@@ -57,11 +57,11 @@ namespace My_Personal_Diary
             string password = tbPassword.Text;
             bool isValid = UserBase.SignUpUser(username, password);
             
-            if(username == "")
+            if(username == "" || username == "Enter username")
             {
                lblMessage.Text = "Please enter a username";
             }
-            else if(password == "")
+            else if(password == "" || password == "Password")
             {
                lblMessage.Text = "Please enter a password";
             }
@@ -116,7 +116,30 @@ namespace My_Personal_Diary
             Diary.ShowDialog();
             this.Close();
         }
-       
+
+        private void tbUsername_Click(object sender, EventArgs e)
+        {
+            if (tbUsername.Text == "Enter username")
+                tbUsername.Text = "";
+        }
+
+        private void tbPassword_Click(object sender, EventArgs e)
+        {
+            if (tbPassword.Text == "Password")
+                tbPassword.Text = "";
+        }
+
+        private void tbUsername_Validating(object sender, CancelEventArgs e)
+        {
+            if (tbUsername.Text == "")
+                tbUsername.Text = "Enter username";
+        }
+
+        private void tbPassword_Validating(object sender, CancelEventArgs e)
+        {
+            if (tbPassword.Text == "")
+                tbPassword.Text = "Password";
+        }
     }
 
     
