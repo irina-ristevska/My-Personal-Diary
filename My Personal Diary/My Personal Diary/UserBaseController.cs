@@ -11,7 +11,7 @@ namespace My_Personal_Diary
 {
     class UserBaseController
     {
-        static readonly string XMLurl = @"c:\temp\MyPersonalDiary.xml"; // ***treba da se smeni vo relativna pateka***
+        static readonly string XMLurl = "MyPersonalDiary.xml"; // ***treba da se smeni vo relativna pateka***
         DataSet XMLset = new DataSet();
         DataRow []XMLresult; 
         int userIndex = -1;

@@ -49,6 +49,11 @@ namespace My_Personal_Diary
             {
                 e.Handled = true;
             }
+            if(e.KeyChar == (char)13)
+            {
+                LogInFunc();
+            }
+
         }
 
         private void btnSignUp_Click(object sender, EventArgs e)
@@ -67,8 +72,10 @@ namespace My_Personal_Diary
             }
             else if(isValid)
             {
-               
+
+
                 lblMessage.Text = "Succefully signed up!";
+                Diary.saveFile();
                 showDiaryDialog();
                                 
             }
@@ -82,6 +89,11 @@ namespace My_Personal_Diary
 
         private void btnLogIn_Click(object sender, EventArgs e)
         {
+            LogInFunc();
+        }
+
+        private void LogInFunc()
+        {
             string username = tbUsername.Text;
             string password = tbPassword.Text;
 
@@ -89,20 +101,20 @@ namespace My_Personal_Diary
 
             if (username == "")
             {
-               lblMessage.Text = "Please enter a username";
+                lblMessage.Text = "Please enter a username";
             }
             else if (password == "")
             {
-               lblMessage.Text = "Please enter a password";
+                lblMessage.Text = "Please enter a password";
             }
             else if (isValid)
             {
-               lblMessage.Text = "Succefully logged in!";
-               showDiaryDialog();
+                lblMessage.Text = "Succefully logged in!";
+                showDiaryDialog();
             }
             else
             {
-               lblMessage.Text = "Invalid username or password";
+                lblMessage.Text = "Invalid username or password";
             }
             pnlMessage.Visible = true;
         }

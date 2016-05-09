@@ -14,12 +14,7 @@ namespace My_Personal_Diary
         public DateTime Date { get; set; }
         public String StringDate { get; set; }
         public String Text { get; set; }
-        public Color Color { get; set; }
-        public bool Bold { get; set; }
-        public bool Italic { get; set; }
-        public bool Underline { get; set; }
-        public Font Font { get; set; }
-        public float fontSize { get; set; }
+
        
 
 

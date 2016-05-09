@@ -14,6 +14,7 @@ namespace My_Personal_Diary
     [Serializable]
     class Document
     {
+        public Bitmap image { get; set; }
         public String fileName;
         public bool isChanged;
         public List<Entry> entrys;
