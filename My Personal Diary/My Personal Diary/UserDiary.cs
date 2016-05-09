@@ -45,7 +45,7 @@ namespace My_Personal_Diary
             fillFontSize();
             lblPickDateListBox.Text = monthCalendar.SelectionStart.ToShortDateString();
             doc = new Document();
-            doc.addFonts(ddlFontPicker);
+            fillFontFamily();
             this.rtEditorDiary.ForeColor = cdColor.Color;
             fileName = null;
         }
@@ -165,17 +165,30 @@ namespace My_Personal_Diary
             doc.findAndShowEntrysOnThisDate(lblPickDateListBox.Text, lbThisDateEntries);
         }
 
-        private void ddlFontPicker_SelectedIndexChanged(object sender, EventArgs e)
+        private void fillFontFamily()
         {
-            ///does not work
+            foreach (FontFamily fontFamily in FontFamily.Families)
+            {
+                ddlFontPicker.Items.Add(fontFamily.Name.ToString());
+                ddlFontPicker.SelectedIndex = 0;
+            }
+        }
+
+        private void ddlFontPicker_SelectedIndexChanged(object sender, EventArgs e) // fixed
+        {
             String familyName = ddlFontPicker.SelectedItem.ToString();
-            Font f = new Font(familyName, 14);
+            FontFamily ff = new FontFamily(familyName);
+            Font f = new Font(ff, rtEditorDiary.SelectionFont.Size, rtEditorDiary.SelectionFont.Style);
             rtEditorDiary.SelectionFont = f;
         }
 
         private void ddlSizePick_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //change the font size
+            float size = rtEditorDiary.SelectionFont.SizeInPoints;
+            float newSize = 14;
+            float.TryParse(ddlSizePick.SelectedItem.ToString(), out newSize);
+            Font newFont = new Font(rtEditorDiary.SelectionFont.Name, newSize, rtEditorDiary.SelectionFont.Style);
+            rtEditorDiary.SelectionFont = newFont;
         }
 
         private void tsbFontColor_Click(object sender, EventArgs e)
@@ -247,11 +260,7 @@ namespace My_Personal_Diary
             LogIn l = new LogIn();
             l.Show();
         }
-        /// <summary>
-        /// ...
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        
         private void lbThisDateEntries_DoubleClick(object sender, EventArgs e)
         {
             try
@@ -264,6 +273,12 @@ namespace My_Personal_Diary
             }
             catch (Exception ex)
             { }
+        }
+
+        private void tsbFontHighLighter_Click(object sender, EventArgs e)
+        {
+            cdColor.ShowDialog();
+            this.rtEditorDiary.SelectionBackColor = cdColor.Color;
         }
     }
 }

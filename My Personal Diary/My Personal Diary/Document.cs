@@ -74,41 +74,8 @@ namespace My_Personal_Diary
            reminders.Remove(temp);
             }
             */
+
+
         
-        /// <summary>
-        /// add fonts to the ToolStripComboBox
-        /// </summary>
-        /// <param name="ddlFontPicker"></param>
-        public void addFonts (ToolStripComboBox ddlFontPicker)
-        {
-            foreach (FontFamily fontFamily in FontFamily.Families)
-            {
-                if (fontFamily.IsStyleAvailable(FontStyle.Regular))
-                {
-                    ddlFontPicker.Items.Add(fontFamily.Name + " (Regular)");
-                }
-
-                if (fontFamily.IsStyleAvailable(FontStyle.Bold))
-                {
-                    ddlFontPicker.Items.Add(fontFamily.Name + " (Bold)");
-                }
-
-                if (fontFamily.IsStyleAvailable(FontStyle.Italic))
-                {
-                    ddlFontPicker.Items.Add(fontFamily.Name + " (Italic)");
-                }
-
-                if (fontFamily.IsStyleAvailable(FontStyle.Underline))
-                {
-                    ddlFontPicker.Items.Add(fontFamily.Name + " (Underline)");
-                }
-
-                if (fontFamily.IsStyleAvailable(FontStyle.Strikeout))
-                {
-                    ddlFontPicker.Items.Add(fontFamily.Name + " (Strikeout)");
-                }
-                ddlFontPicker.SelectedIndex = 0;
-            }
-        }
     }
 }
