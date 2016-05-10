@@ -56,6 +56,16 @@ namespace My_Personal_Diary
                 }
             }
         }
+
+        public Entry findEntry (Entry entry)
+        {
+            foreach(Entry e in entrys)
+            {
+                if (e.Date.Equals(entry.Date) && e.ID.Equals(entry.ID))
+                    return e;
+            }
+            return null;
+        }
         /*
         public void addNewReminder(Reminder r)
         {

@@ -14,11 +14,14 @@ namespace My_Personal_Diary
         public DateTime Date { get; set; }
         public String StringDate { get; set; }
         public String Text { get; set; }
-
+        public int ID { get; private set; }
        
 
 
-        public Entry() { }
+        public Entry()
+        {
+            ID = new Random().Next();
+        }
 
         public override string ToString()
         {

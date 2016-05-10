@@ -30,11 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserDiary));
             this.pnlTop = new System.Windows.Forms.Panel();
-            this.btnReminder = new System.Windows.Forms.Button();
-            this.btnEntry = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.pbLogo = new System.Windows.Forms.PictureBox();
+            this.btnReminder = new System.Windows.Forms.Button();
+            this.btnEntry = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btEditEntry = new System.Windows.Forms.Button();
+            this.btDeleteE = new System.Windows.Forms.Button();
             this.pnlListBox = new System.Windows.Forms.Panel();
             this.lblPickDateListBox = new System.Windows.Forms.Label();
             this.lbThisDateEntries = new System.Windows.Forms.ListBox();
@@ -44,7 +47,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.pbCalendarIcon = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.tsBold = new System.Windows.Forms.ToolStripButton();
@@ -66,7 +68,6 @@
             this.tbTitle = new System.Windows.Forms.TextBox();
             this.lblDateNewEntry = new System.Windows.Forms.Label();
             this.cdColor = new System.Windows.Forms.ColorDialog();
-            this.btDeleteE = new System.Windows.Forms.Button();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.panel1.SuspendLayout();
@@ -89,36 +90,21 @@
             this.pnlTop.Size = new System.Drawing.Size(1066, 58);
             this.pnlTop.TabIndex = 0;
             // 
-            // btnReminder
+            // btnSave
             // 
-            this.btnReminder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReminder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(143)))), ((int)(((byte)(163)))));
-            this.btnReminder.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(162)))), ((int)(((byte)(184)))));
-            this.btnReminder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReminder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReminder.ForeColor = System.Drawing.Color.White;
-            this.btnReminder.Location = new System.Drawing.Point(589, 5);
-            this.btnReminder.Name = "btnReminder";
-            this.btnReminder.Size = new System.Drawing.Size(103, 28);
-            this.btnReminder.TabIndex = 3;
-            this.btnReminder.Text = "+ Reminder";
-            this.btnReminder.UseVisualStyleBackColor = false;
-            // 
-            // btnEntry
-            // 
-            this.btnEntry.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEntry.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(143)))), ((int)(((byte)(163)))));
-            this.btnEntry.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(162)))), ((int)(((byte)(184)))));
-            this.btnEntry.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEntry.ForeColor = System.Drawing.Color.White;
-            this.btnEntry.Location = new System.Drawing.Point(707, 5);
-            this.btnEntry.Name = "btnEntry";
-            this.btnEntry.Size = new System.Drawing.Size(93, 28);
-            this.btnEntry.TabIndex = 2;
-            this.btnEntry.Text = "+ Entry";
-            this.btnEntry.UseVisualStyleBackColor = false;
-            this.btnEntry.Click += new System.EventHandler(this.btnEntry_Click);
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.BackColor = System.Drawing.Color.Transparent;
+            this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(162)))), ((int)(((byte)(184)))));
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Location = new System.Drawing.Point(813, 12);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(133, 34);
+            this.btnSave.TabIndex = 4;
+            this.btnSave.Text = "Save All Entries";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnLogOut
             // 
@@ -126,7 +112,7 @@
             this.btnLogOut.BackColor = System.Drawing.Color.Transparent;
             this.btnLogOut.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(162)))), ((int)(((byte)(184)))));
             this.btnLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogOut.ForeColor = System.Drawing.Color.White;
             this.btnLogOut.Location = new System.Drawing.Point(961, 12);
             this.btnLogOut.Name = "btnLogOut";
@@ -146,9 +132,41 @@
             this.pbLogo.TabIndex = 0;
             this.pbLogo.TabStop = false;
             // 
+            // btnReminder
+            // 
+            this.btnReminder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReminder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(143)))), ((int)(((byte)(163)))));
+            this.btnReminder.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(162)))), ((int)(((byte)(184)))));
+            this.btnReminder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReminder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReminder.ForeColor = System.Drawing.Color.White;
+            this.btnReminder.Location = new System.Drawing.Point(568, 5);
+            this.btnReminder.Name = "btnReminder";
+            this.btnReminder.Size = new System.Drawing.Size(103, 28);
+            this.btnReminder.TabIndex = 3;
+            this.btnReminder.Text = "+ Reminder";
+            this.btnReminder.UseVisualStyleBackColor = false;
+            // 
+            // btnEntry
+            // 
+            this.btnEntry.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEntry.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(143)))), ((int)(((byte)(163)))));
+            this.btnEntry.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(162)))), ((int)(((byte)(184)))));
+            this.btnEntry.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEntry.ForeColor = System.Drawing.Color.White;
+            this.btnEntry.Location = new System.Drawing.Point(686, 5);
+            this.btnEntry.Name = "btnEntry";
+            this.btnEntry.Size = new System.Drawing.Size(93, 28);
+            this.btnEntry.TabIndex = 2;
+            this.btnEntry.Text = "+ Entry";
+            this.btnEntry.UseVisualStyleBackColor = false;
+            this.btnEntry.Click += new System.EventHandler(this.btnEntry_Click);
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(97)))), ((int)(((byte)(113)))));
+            this.panel1.Controls.Add(this.btEditEntry);
             this.panel1.Controls.Add(this.btDeleteE);
             this.panel1.Controls.Add(this.pnlListBox);
             this.panel1.Controls.Add(this.lbThisDateEntries);
@@ -158,18 +176,45 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 58);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(255, 585);
+            this.panel1.Size = new System.Drawing.Size(278, 585);
             this.panel1.TabIndex = 0;
+            // 
+            // btEditEntry
+            // 
+            this.btEditEntry.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(97)))), ((int)(((byte)(113)))));
+            this.btEditEntry.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btEditEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btEditEntry.ForeColor = System.Drawing.Color.White;
+            this.btEditEntry.Location = new System.Drawing.Point(12, 512);
+            this.btEditEntry.Name = "btEditEntry";
+            this.btEditEntry.Size = new System.Drawing.Size(113, 34);
+            this.btEditEntry.TabIndex = 5;
+            this.btEditEntry.Text = "Edit Entry";
+            this.btEditEntry.UseVisualStyleBackColor = false;
+            this.btEditEntry.Click += new System.EventHandler(this.btEditEntry_Click);
+            // 
+            // btDeleteE
+            // 
+            this.btDeleteE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btDeleteE.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btDeleteE.ForeColor = System.Drawing.Color.White;
+            this.btDeleteE.Location = new System.Drawing.Point(141, 512);
+            this.btDeleteE.Name = "btDeleteE";
+            this.btDeleteE.Size = new System.Drawing.Size(113, 34);
+            this.btDeleteE.TabIndex = 5;
+            this.btDeleteE.Text = "Delete Entry";
+            this.btDeleteE.UseVisualStyleBackColor = true;
+            this.btDeleteE.Click += new System.EventHandler(this.btDeleteE_Click);
             // 
             // pnlListBox
             // 
             this.pnlListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlListBox.BackColor = System.Drawing.Color.Firebrick;
+            this.pnlListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.pnlListBox.Controls.Add(this.lblPickDateListBox);
-            this.pnlListBox.Location = new System.Drawing.Point(14, 317);
+            this.pnlListBox.Location = new System.Drawing.Point(9, 335);
             this.pnlListBox.Name = "pnlListBox";
-            this.pnlListBox.Size = new System.Drawing.Size(227, 27);
+            this.pnlListBox.Size = new System.Drawing.Size(250, 27);
             this.pnlListBox.TabIndex = 4;
             // 
             // lblPickDateListBox
@@ -177,7 +222,7 @@
             this.lblPickDateListBox.AutoSize = true;
             this.lblPickDateListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPickDateListBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblPickDateListBox.Location = new System.Drawing.Point(-2, 1);
+            this.lblPickDateListBox.Location = new System.Drawing.Point(0, 0);
             this.lblPickDateListBox.Name = "lblPickDateListBox";
             this.lblPickDateListBox.Size = new System.Drawing.Size(247, 20);
             this.lblPickDateListBox.TabIndex = 0;
@@ -191,11 +236,11 @@
             this.lbThisDateEntries.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.lbThisDateEntries.FormattingEnabled = true;
             this.lbThisDateEntries.ItemHeight = 18;
-            this.lbThisDateEntries.Location = new System.Drawing.Point(14, 341);
+            this.lbThisDateEntries.Location = new System.Drawing.Point(12, 360);
             this.lbThisDateEntries.Name = "lbThisDateEntries";
-            this.lbThisDateEntries.Size = new System.Drawing.Size(227, 128);
+            this.lbThisDateEntries.Size = new System.Drawing.Size(242, 146);
             this.lbThisDateEntries.TabIndex = 3;
-            this.lbThisDateEntries.DoubleClick += new System.EventHandler(this.lbThisDateEntries_DoubleClick);
+            this.lbThisDateEntries.SelectedValueChanged += new System.EventHandler(this.lbThisDateEntries_SelectedValueChanged);
             // 
             // lblHelloMessage
             // 
@@ -229,7 +274,7 @@
             this.monthCalendar.Cursor = System.Windows.Forms.Cursors.Default;
             this.monthCalendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.monthCalendar.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.monthCalendar.Location = new System.Drawing.Point(14, 137);
+            this.monthCalendar.Location = new System.Drawing.Point(18, 147);
             this.monthCalendar.MaxSelectionCount = 1;
             this.monthCalendar.Name = "monthCalendar";
             this.monthCalendar.TabIndex = 0;
@@ -252,9 +297,9 @@
             this.panel3.Controls.Add(this.tbTitle);
             this.panel3.Controls.Add(this.lblDateNewEntry);
             this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel3.Location = new System.Drawing.Point(254, 58);
+            this.panel3.Location = new System.Drawing.Point(275, 58);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(812, 585);
+            this.panel3.Size = new System.Drawing.Size(791, 585);
             this.panel3.TabIndex = 2;
             // 
             // pbCalendarIcon
@@ -273,31 +318,15 @@
             this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.DarkSalmon;
             this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(162)))), ((int)(((byte)(184)))));
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.Black;
-            this.btnClose.Location = new System.Drawing.Point(707, 544);
+            this.btnClose.Location = new System.Drawing.Point(686, 544);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(93, 31);
             this.btnClose.TabIndex = 4;
             this.btnClose.Text = "Save Entry";
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.BackColor = System.Drawing.Color.Transparent;
-            this.btnSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(162)))), ((int)(((byte)(184)))));
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(843, 12);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(103, 34);
-            this.btnSave.TabIndex = 4;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // toolStrip
             // 
@@ -323,7 +352,7 @@
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip.Size = new System.Drawing.Size(812, 40);
+            this.toolStrip.Size = new System.Drawing.Size(791, 40);
             this.toolStrip.TabIndex = 4;
             this.toolStrip.Text = "toolStrip1";
             // 
@@ -454,12 +483,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtEditorDiary.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtEditorDiary.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtEditorDiary.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtEditorDiary.ForeColor = System.Drawing.SystemColors.WindowText;
             this.rtEditorDiary.Location = new System.Drawing.Point(18, 137);
             this.rtEditorDiary.Name = "rtEditorDiary";
             this.rtEditorDiary.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rtEditorDiary.Size = new System.Drawing.Size(782, 401);
+            this.rtEditorDiary.Size = new System.Drawing.Size(761, 401);
             this.rtEditorDiary.TabIndex = 3;
             this.rtEditorDiary.Text = "";
             // 
@@ -468,11 +497,11 @@
             this.tbTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTitle.Font = new System.Drawing.Font("Comic Sans MS", 15F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbTitle.ForeColor = System.Drawing.Color.Salmon;
             this.tbTitle.Location = new System.Drawing.Point(18, 90);
             this.tbTitle.Name = "tbTitle";
-            this.tbTitle.Size = new System.Drawing.Size(782, 23);
+            this.tbTitle.Size = new System.Drawing.Size(761, 28);
             this.tbTitle.TabIndex = 2;
             this.tbTitle.Text = "Diary Title";
             this.tbTitle.Click += new System.EventHandler(this.tbTitle_Click);
@@ -492,16 +521,6 @@
             // cdColor
             // 
             this.cdColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            // 
-            // btDeleteE
-            // 
-            this.btDeleteE.Location = new System.Drawing.Point(14, 475);
-            this.btDeleteE.Name = "btDeleteE";
-            this.btDeleteE.Size = new System.Drawing.Size(224, 26);
-            this.btDeleteE.TabIndex = 5;
-            this.btDeleteE.Text = "Delete Entry";
-            this.btDeleteE.UseVisualStyleBackColor = true;
-            this.btDeleteE.Click += new System.EventHandler(this.btDeleteE_Click);
             // 
             // UserDiary
             // 
@@ -571,5 +590,6 @@
         private System.Windows.Forms.ColorDialog cdColor;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btDeleteE;
+        private System.Windows.Forms.Button btEditEntry;
     }
 }

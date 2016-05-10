@@ -129,18 +129,6 @@ namespace My_Personal_Diary
             this.Close();
         }
 
-        private void tbUsername_Click(object sender, EventArgs e)
-        {
-            if (tbUsername.Text == "Enter username")
-                tbUsername.Text = "";
-        }
-
-        private void tbPassword_Click(object sender, EventArgs e)
-        {
-            if (tbPassword.Text == "Password")
-                tbPassword.Text = "";
-        }
-
         private void tbUsername_Validating(object sender, CancelEventArgs e)
         {
             if (tbUsername.Text == "")
@@ -151,6 +139,18 @@ namespace My_Personal_Diary
         {
             if (tbPassword.Text == "")
                 tbPassword.Text = "Password";
+        }
+
+        private void tbUsername_Enter(object sender, EventArgs e)
+        {
+            if (tbUsername.Text == "Enter username")
+                tbUsername.Text = "";
+        }
+
+        private void tbPassword_Enter(object sender, EventArgs e)
+        {
+            if (tbPassword.Text == "Password")
+                tbPassword.Text = "";
         }
     }
 

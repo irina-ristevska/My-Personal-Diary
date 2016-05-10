@@ -143,7 +143,7 @@
             this.tbUsername.Size = new System.Drawing.Size(229, 23);
             this.tbUsername.TabIndex = 0;
             this.tbUsername.Text = "Enter username";
-            this.tbUsername.Click += new System.EventHandler(this.tbUsername_Click);
+            this.tbUsername.Enter += new System.EventHandler(this.tbUsername_Enter);
             this.tbUsername.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbUsername_KeyPress);
             this.tbUsername.Validating += new System.ComponentModel.CancelEventHandler(this.tbUsername_Validating);
             // 
@@ -170,7 +170,7 @@
             this.tbPassword.TabIndex = 0;
             this.tbPassword.Text = "Password";
             this.tbPassword.UseSystemPasswordChar = true;
-            this.tbPassword.Click += new System.EventHandler(this.tbPassword_Click);
+            this.tbPassword.Enter += new System.EventHandler(this.tbPassword_Enter);
             this.tbPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPassword_KeyPress);
             this.tbPassword.Validating += new System.ComponentModel.CancelEventHandler(this.tbPassword_Validating);
             // 

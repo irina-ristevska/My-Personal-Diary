@@ -18,6 +18,8 @@ namespace My_Personal_Diary
     public partial class UserDiary : Form
     {
         Document doc;
+        private bool editing;
+        private bool isSaved;
 
         string DiaryFile
         {
@@ -33,7 +35,8 @@ namespace My_Personal_Diary
         public UserDiary()
         {
 
-
+            editing = false;
+            isSaved = true;
             int height = Screen.PrimaryScreen.Bounds.Height;
             int width = Screen.PrimaryScreen.Bounds.Width;
             this.Height = height;
@@ -51,8 +54,17 @@ namespace My_Personal_Diary
 
             lblDateNewEntry.Text = monthCalendar.TodayDate.ToShortDateString();
             doc.findAndShowEntrysOnThisDate(monthCalendar.TodayDate.ToShortDateString(), lbThisDateEntries);
+            hideComponents();
         }
-
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams parms = base.CreateParams;
+                parms.ClassStyle |= 0x200;
+                return parms;
+            }
+        }
         private void toolStripButton1_Click(object sender, EventArgs e) // Bold funkcija
         {
             Font Bold = new Font(rtEditorDiary.SelectionFont.FontFamily, rtEditorDiary.SelectionFont.SizeInPoints, rtEditorDiary.Font.Style | FontStyle.Bold);
@@ -90,19 +102,10 @@ namespace My_Personal_Diary
 
         private void btnEntry_Click(object sender, EventArgs e)
         {
-            //Entry en = new Entry();
-            //en.Title = tbTitle.Text.ToString();
-            //en.Text = rtEditorDiary.Rtf;
-            //en.Date = monthCalendar.SelectionStart;
-            //en.StringDate = monthCalendar.SelectionStart.ToShortDateString();
-
-            //doc.addNewEntry(en);
-            //clearFields();
-            //lbThisDateEntries.Items.Add(en);
-
-            //new
             clearFields();
             enableEditor();
+            showComponents();
+            isSaved = false;
         }
 
         private void clearFields()
@@ -240,7 +243,7 @@ namespace My_Personal_Diary
                     FileAccess.Read, FileShare.None);
                 doc = (Document)fmt.Deserialize(strm);
                 strm.Close();
-                MessageBox.Show("Uspesno otvoreno :D");
+               // MessageBox.Show("Uspesno otvoreno");
             }
             catch (Exception ex)
             {
@@ -263,22 +266,16 @@ namespace My_Personal_Diary
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (!isSaved)
+            {
+                DialogResult dialogResult = MessageBox.Show("Do you want to save your changes?",
+                "Log out", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                    saveFile();
+            }
+            this.Close();    
             LogIn l = new LogIn();
             l.Show();
-        }
-
-        private void lbThisDateEntries_DoubleClick(object sender, EventArgs e)
-        {
-            try
-            {
-                Entry en = (Entry)lbThisDateEntries.SelectedItem;
-                tbTitle.Text = en.Title;
-                rtEditorDiary.Rtf = en.Text;
-                freezeEditor();
-            }
-            catch (Exception ex)
-            { }
         }
 
         private void tsbFontHighLighter_Click(object sender, EventArgs e)
@@ -313,35 +310,56 @@ namespace My_Personal_Diary
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            //clearFields();
-            //rtEditorDiary.Enabled = true;
+            Entry en;
+            if (tbTitle.Text == "Diary Title")
+            {
+                MessageBox.Show("Enter Title");
+                return;
+            }
+            if (editing)
+            {
+                en = doc.findEntry((Entry)lbThisDateEntries.SelectedItem);
+                en.Title = tbTitle.Text.ToString();
+                en.Text = rtEditorDiary.Rtf;
+                en.Date = monthCalendar.SelectionStart;
+                en.StringDate = monthCalendar.SelectionStart.ToShortDateString();
+            }
+            else
+            {
+                en = new Entry();
+                en.Title = tbTitle.Text.ToString();
+                en.Text = rtEditorDiary.Rtf;
+                en.Date = monthCalendar.SelectionStart;
+                en.StringDate = monthCalendar.SelectionStart.ToShortDateString();
 
-            // new
-            Entry en = new Entry();
-            en.Title = tbTitle.Text.ToString();
-            en.Text = rtEditorDiary.Rtf;
-            en.Date = monthCalendar.SelectionStart;
-            en.StringDate = monthCalendar.SelectionStart.ToShortDateString();
-
-            doc.addNewEntry(en);
+                doc.addNewEntry(en);
+                lbThisDateEntries.Items.Add(en);
+            }
             clearFields();
-
-            lbThisDateEntries.Items.Add(en);
             freezeEditor();
+            hideComponents();
+            isSaved = true;
         }
 
         private void btDeleteE_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete the selected entry?",
-                "Deleting", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            try
             {
                 Entry en = (Entry)lbThisDateEntries.SelectedItem;
-                lbThisDateEntries.Items.RemoveAt(lbThisDateEntries.SelectedIndex);
-                doc.deleteEntry(en.Title);
-                clearFields();
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete the selected entry?",
+                "Deleting", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    lbThisDateEntries.Items.RemoveAt(lbThisDateEntries.SelectedIndex);
+                    doc.deleteEntry(en.Title);
+                    clearFields();
+                }
+                isSaved = false;
             }
-
+            catch(Exception ex)
+            {
+                MessageBox.Show("Select the entry for deleting !");
+            }
         }
 
         private void btEditE_Click(object sender, EventArgs e)
@@ -354,16 +372,51 @@ namespace My_Personal_Diary
         private void freezeEditor()
         {
             btnClose.Enabled = false;
-            rtEditorDiary.ReadOnly = true;
-            tbTitle.ReadOnly = true;
+            rtEditorDiary.Enabled = false;
+            tbTitle.Enabled = false;
 
         }
 
         private void enableEditor()
         {
             btnClose.Enabled = true;
-            rtEditorDiary.ReadOnly = false;
-            tbTitle.ReadOnly = false;
+            rtEditorDiary.Enabled = true;
+            tbTitle.Enabled = true;
+        }
+
+        private void hideComponents()
+        {
+            btnClose.Enabled = false;
+            rtEditorDiary.Visible = false;
+            tbTitle.Visible = false;
+        }
+
+        private void showComponents()
+        {
+            btnClose.Enabled = true;
+            rtEditorDiary.Visible = true;
+            tbTitle.Visible = true;
+        }
+
+        private void lbThisDateEntries_SelectedValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Entry en = (Entry)lbThisDateEntries.SelectedItem;
+                tbTitle.Text = en.Title;
+                rtEditorDiary.Rtf = en.Text;
+                freezeEditor();
+            }
+            catch (Exception ex)
+            { }
+        }
+
+        private void btEditEntry_Click(object sender, EventArgs e)
+        {
+            showComponents();
+            enableEditor();
+            editing = true;
+            isSaved = false;
         }
     }
 

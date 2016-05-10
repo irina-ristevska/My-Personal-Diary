@@ -64,6 +64,11 @@
         <Password>n</Password>
         <DiaryFile>nov2.mpd</DiaryFile>
       </Users>
+      <Users diffgr:id="Users10" msdata:rowOrder="9" diffgr:hasChanges="inserted">
+        <UserName>Petar</UserName>
+        <Password>petar</Password>
+        <DiaryFile>Petar.mpd</DiaryFile>
+      </Users>
     </NewDataSet>
   </diffgr:diffgram>
 </DataSet>
