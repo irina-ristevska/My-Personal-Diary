@@ -18,14 +18,12 @@ namespace My_Personal_Diary
         public String fileName;
         public bool isChanged;
         public List<Entry> entrys;
-        public List<Task> Tasks;
+        
 
         public Document()
         {
             fileName = null;
             entrys = new List<Entry>();
-            Tasks = new List<Task>();
-            Tasks.Add(new Task());
             isChanged = true;
         }
         
@@ -70,46 +68,7 @@ namespace My_Personal_Diary
             return null;
         }
         #endregion
-        #region Task methods
-        public void addNewTask(Task t)
-        {
-            Tasks.Add(new Task());
-            Tasks.Add(t);
-        }
-        public void findAndShowTasksDueThisDate(String date, ListBox list)
-        {
-            list.Items.Clear();
-            foreach (Task t in Tasks)
-            {
-                if (date == t.DueDate.ToShortDateString())
-                {
-                    list.Items.Add(t);
-                }
-            }
-        }
-
-        public void findAndShowAllTasks(ListBox list)
-        {
-            list.Items.Clear();
-            foreach (Task t in Tasks)
-            {
-                 list.Items.Add(t);
-                
-            }
-        }
-
-        public Task findTask(Task task)
-        {
-            foreach (Task t in Tasks)
-            {
-                if (t.DueDate.Equals(task.DueDate) && t.ID.Equals(task.ID))
-                    return t;
-            }
-            return null;
-        }
-
-
-        #endregion
+      
 
 
 

@@ -41,6 +41,7 @@
             this.pnlMessage = new System.Windows.Forms.Panel();
             this.lblMessage = new System.Windows.Forms.Label();
             this.pbLogo = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.pnlBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPassIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbUserIcon)).BeginInit();
@@ -61,7 +62,7 @@
             this.pnlBox.Controls.Add(this.pbUserIcon);
             this.pnlBox.Controls.Add(this.pnlUsername);
             this.pnlBox.Controls.Add(this.pnlPassword);
-            this.pnlBox.Location = new System.Drawing.Point(73, 173);
+            this.pnlBox.Location = new System.Drawing.Point(73, 194);
             this.pnlBox.Name = "pnlBox";
             this.pnlBox.Size = new System.Drawing.Size(340, 382);
             this.pnlBox.TabIndex = 0;
@@ -84,6 +85,7 @@
             this.btnLogIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(97)))), ((int)(((byte)(113)))));
             this.btnLogIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogIn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnLogIn.Location = new System.Drawing.Point(15, 269);
             this.btnLogIn.Name = "btnLogIn";
             this.btnLogIn.Size = new System.Drawing.Size(310, 46);
@@ -179,7 +181,7 @@
             this.pnlMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnlMessage.BackColor = System.Drawing.Color.Firebrick;
             this.pnlMessage.Controls.Add(this.lblMessage);
-            this.pnlMessage.Location = new System.Drawing.Point(73, 142);
+            this.pnlMessage.Location = new System.Drawing.Point(73, 163);
             this.pnlMessage.Name = "pnlMessage";
             this.pnlMessage.Size = new System.Drawing.Size(340, 31);
             this.pnlMessage.TabIndex = 2;
@@ -201,18 +203,29 @@
             this.pbLogo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pbLogo.BackgroundImage = global::My_Personal_Diary.Properties.Resources.LogoWhite;
             this.pbLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pbLogo.Location = new System.Drawing.Point(73, 6);
+            this.pbLogo.Location = new System.Drawing.Point(73, 27);
             this.pbLogo.Name = "pbLogo";
             this.pbLogo.Size = new System.Drawing.Size(340, 130);
             this.pbLogo.TabIndex = 1;
             this.pbLogo.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label2.Location = new System.Drawing.Point(94, 587);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(292, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "-- VP Project by Irina Ristevska and Maja Milosheska 2016 --";
             // 
             // LogIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(116)))), ((int)(((byte)(140)))));
-            this.ClientSize = new System.Drawing.Size(484, 571);
+            this.ClientSize = new System.Drawing.Size(484, 612);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.pnlMessage);
             this.Controls.Add(this.pbLogo);
             this.Controls.Add(this.pnlBox);
@@ -231,6 +244,7 @@
             this.pnlMessage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -249,6 +263,7 @@
         private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.Button btnLogIn;
         private System.Windows.Forms.Button btnSignUp;
+        private System.Windows.Forms.Label label2;
     }
 }
 

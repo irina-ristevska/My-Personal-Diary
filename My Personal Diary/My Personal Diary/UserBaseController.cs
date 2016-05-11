@@ -11,9 +11,10 @@ namespace My_Personal_Diary
 {
     class UserBaseController
     {
-        static readonly string XMLurl = "MyPersonalDiary.xml"; // ***treba da se smeni vo relativna pateka***
+        static readonly string XMLurl = "MyPersonalDiary.xml"; 
         DataSet XMLset = new DataSet();
-        DataRow []XMLresult; 
+        DataRow []XMLresult;
+       
         int userIndex = -1;
 
         public void LoadXML()
@@ -30,7 +31,7 @@ namespace My_Personal_Diary
 
                 UpdateXMLfile(); 
             }
-
+           
             GetXMLfile();
         }
 
@@ -98,9 +99,15 @@ namespace My_Personal_Diary
         {
             XmlSerializer xmlSerializer = new XmlSerializer(XMLset.GetType());
             FileStream reader = new FileStream(XMLurl, FileMode.Open);
-
-            XMLset = (DataSet) xmlSerializer.Deserialize(reader); // ------- mozhno e da treba try/catch ---------- Vo sluchaj da e corrupted fajlot
-            reader.Close();
+            try {
+                XMLset = (DataSet)xmlSerializer.Deserialize(reader); 
+                reader.Close();
+            }
+            catch(Exception e)
+            {
+                UpdateXMLfile();
+            }
+           
         }
     }
 }

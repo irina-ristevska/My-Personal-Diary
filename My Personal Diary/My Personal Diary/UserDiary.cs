@@ -34,8 +34,7 @@ namespace My_Personal_Diary
 
         public UserDiary()
         {
-            doc = new Document();
-            
+
             editing = false;
             isSaved = true;
             int height = Screen.PrimaryScreen.Bounds.Height;
@@ -43,19 +42,17 @@ namespace My_Personal_Diary
             this.Height = height;
             this.Width = width;
             this.WindowState = FormWindowState.Maximized;
-
             InitializeComponent();
             
             fillFontSize();
-            lblPickDateListBox.Text = monthCalendar.SelectionStart.ToShortDateString();
             
+            doc = new Document();
             fillFontFamily();
             this.rtEditorDiary.ForeColor = Color.Salmon;
             fileName = null;
 
-            lblDateNewEntry.Text = monthCalendar.TodayDate.ToShortDateString();
+            lblDateNewEntry.Text = "Date: " + monthCalendar.TodayDate.ToShortDateString();
             doc.findAndShowEntrysOnThisDate(monthCalendar.TodayDate.ToShortDateString(), lbThisDateEntries);
-            doc.findAndShowAllTasks(lbTasks);
             hideComponents();
         }
         protected override CreateParams CreateParams
@@ -67,7 +64,6 @@ namespace My_Personal_Diary
                 return parms;
             }
         }
-
         private void toolStripButton1_Click(object sender, EventArgs e) // Bold funkcija
         {
             Font Bold = new Font(rtEditorDiary.SelectionFont.FontFamily, rtEditorDiary.SelectionFont.SizeInPoints, rtEditorDiary.Font.Style | FontStyle.Bold);
@@ -101,11 +97,12 @@ namespace My_Personal_Diary
         private void btnSave_Click(object sender, EventArgs e)
         {
            saveFile();
+            isSaved = true;
         }
 
         private void btnEntry_Click(object sender, EventArgs e)
         {
-            toggleEntryEditor();
+            lbThisDateEntries.SelectedIndex = -1;
             clearFields();
             enableEditor();
             showComponents();
@@ -165,12 +162,12 @@ namespace My_Personal_Diary
 
         private void monthCalendar_DateSelected(object sender, DateRangeEventArgs e)
         {
-            lblDateNewEntry.Text = e.Start.ToShortDateString();
+            lblDateNewEntry.Text = "Date: " +  e.Start.ToShortDateString();
         }
 
         private void monthCalendar_DateChanged(object sender, DateRangeEventArgs e)
         {
-            lblDateNewEntry.Text = e.Start.ToShortDateString();
+            lblDateNewEntry.Text = "Date: " +  e.Start.ToShortDateString();
             lblPickDateListBox.Text = e.Start.ToShortDateString();
 
             doc.findAndShowEntrysOnThisDate(lblPickDateListBox.Text, lbThisDateEntries);
@@ -221,7 +218,7 @@ namespace My_Personal_Diary
         {
             if (fileName == null)
             {
-                fileName = UserName;
+                fileName = DiaryFile;
             }
             if (fileName != null)
             {
@@ -248,7 +245,7 @@ namespace My_Personal_Diary
                     FileAccess.Read, FileShare.None);
                 doc = (Document)fmt.Deserialize(strm);
                 strm.Close();
-               // MessageBox.Show("Uspesno otvoreno");
+            
             }
             catch (Exception ex)
             {
@@ -261,10 +258,9 @@ namespace My_Personal_Diary
 
         private void UserDiary_Load(object sender, EventArgs e)
         {
-            
-            pnlTaskEditor.Visible = false;
+            lblPickDateListBox.Text = monthCalendar.SelectionStart.ToShortDateString();
             freezeEditor();
-            openFile(UserName);
+            openFile(DiaryFile);
             doc.findAndShowEntrysOnThisDate(monthCalendar.TodayDate.ToShortDateString(), lbThisDateEntries);
             if(doc.image!=null)
                 pbUserIcon.Image = doc.image;
@@ -275,14 +271,21 @@ namespace My_Personal_Diary
         {
             if (!isSaved)
             {
-                DialogResult dialogResult = MessageBox.Show("Do you want to save your changes?",
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to discard all the changes done?",
                 "Log out", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
-                    saveFile();
+                {
+                    DialogResult = DialogResult.OK;
+                    this.Close();
+                }
             }
-            this.Close();    
-            LogIn l = new LogIn();
-            l.Show();
+            else
+            {
+                DialogResult = DialogResult.OK;
+                this.Close();
+            }
+               
+            
         }
 
         private void tsbFontHighLighter_Click(object sender, EventArgs e)
@@ -334,11 +337,11 @@ namespace My_Personal_Diary
                 en = new Entry();
                 en.setEntry(tbTitle.Text.ToString(), monthCalendar.SelectionStart.ToShortDateString(), rtEditorDiary.Rtf, monthCalendar.SelectionStart);//changed
 
-                List<Entry> lst = doc.entrys;
+
                 doc.addNewEntry(en);
-                lst = doc.entrys;
                 lbThisDateEntries.Items.Add(en);
             }
+
             clearFields();
             freezeEditor();
             hideComponents();
@@ -383,14 +386,14 @@ namespace My_Personal_Diary
 
         private void enableEditor()
         {
-            btnClose.Enabled = true;
+            btnClose.Visible = true;
             rtEditorDiary.Enabled = true;
             tbTitle.Enabled = true;
         }
 
         private void hideComponents()
         {
-            btnClose.Enabled = false;
+            btnClose.Visible = false;
             rtEditorDiary.Visible = false;
             tbTitle.Visible = false;
         }
@@ -419,7 +422,6 @@ namespace My_Personal_Diary
 
         private void btEditEntry_Click(object sender, EventArgs e)
         {
-            toggleEntryEditor();
             showComponents();
             enableEditor();
             editing = true;
@@ -428,8 +430,6 @@ namespace My_Personal_Diary
 
         private void lbThisDateEntries_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            toggleEntryEditor();    
             showComponents();
             freezeEditor();
             try
@@ -442,64 +442,7 @@ namespace My_Personal_Diary
             catch (Exception ex)
             { }
         }
-
-        private void lbTasks_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            toggleTaskEditor();
-        }
-
-        private void btnReminder_Click(object sender, EventArgs e)
-        {
-            toggleTaskEditor();
-        }
-
-        private void toggleTaskEditor()
-        {
-            lbThisDateEntries.SelectedIndex = -1;
-            pnlDiaryEntryEditor.Visible = false;
-            pnlTaskEditor.Visible = true;
-        }
-        private void toggleEntryEditor()
-        {
-            lbTasks.SelectedIndex = -1;
-            pnlDiaryEntryEditor.Visible = true;
-            pnlTaskEditor.Visible = false;
-        }
-
-        private void btnSaveTask_Click(object sender, EventArgs e)
-        {
-            Task t;
-            if (tbTaskTitle.Text == "Task Title")
-            {
-                MessageBox.Show("Enter Title");
-                return;
-            }
-            if (editing)
-            {
-                t = doc.findTask((Task)lbTasks.SelectedItem);
-                t.setTask(tbTaskTitle.Text + monthCalendar.SelectionStart.ToShortDateString(), rtTaskDetail.Rtf, monthCalendar.SelectionStart);
-
-            }
-            else
-            {
-                t = new Task();
-                t.setTask(tbTaskTitle.Text + monthCalendar.SelectionStart.ToShortDateString(), rtTaskDetail.Rtf, monthCalendar.SelectionStart);
-                List<Task> tsk = doc.Tasks;
-                string details = t.Title;
-                string due = t.DueDate.ToShortDateString();
-                int aa = t.ID;
-                if (t != null)
-                {
-                    doc.Tasks.Add(t);
-                    lbTasks.Items.Add(t);
-                }
-            }
-            clearFields();
-            freezeEditor();
-            hideComponents();
-            isSaved = false;
-        }
     }
 
-   
+    
 }

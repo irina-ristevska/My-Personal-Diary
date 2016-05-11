@@ -19,7 +19,9 @@ namespace My_Personal_Diary
         {
             UserBase = new UserBaseController();
             Diary = new UserDiary();
-            UserBase.LoadXML(); // loadiranje na bazata so korisnici (dokolku ne postoi fajlot, se kreira)
+            UserBase.LoadXML();
+            // loadiranje na bazata so korisnici (dokolku ne postoi fajlot, se kreira)
+           
             InitializeComponent();
 
 
@@ -125,8 +127,19 @@ namespace My_Personal_Diary
             string url = UserBase.GetDiaryFile();
             Diary.setDiaryFile(url, username);
             Diary.helloMessage();
-            Diary.ShowDialog();
-            this.Close();
+            this.Hide();
+            if (Diary.ShowDialog() == DialogResult.OK)
+            {
+                lblMessage.Text = "Succeffully logged out!";
+                tbPassword.Text = "";
+                tbUsername.Text = "Enter username";
+                
+                tbUsername.Focus();
+                
+                this.Show();
+
+            }
+            
         }
 
         private void tbUsername_Validating(object sender, CancelEventArgs e)

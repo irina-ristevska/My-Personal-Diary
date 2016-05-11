@@ -38,3 +38,13 @@ C:\Users\Lena\Desktop\My Personal Diary\backup\My Personal Diary\My Personal Dia
 C:\Users\Lena\Desktop\My Personal Diary\backup\My Personal Diary\My Personal Diary\obj\Debug\My_Personal_Diary.Properties.Resources.resources
 C:\Users\Lena\Desktop\My Personal Diary\backup\My Personal Diary\My Personal Diary\obj\Debug\My_Personal_Diary.UserDiary.resources
 C:\Users\Lena\Desktop\My Personal Diary\backup\My Personal Diary\My Personal Diary\obj\Debug\My Personal Diary.csproj.GenerateResource.Cache
+C:\Users\Lena\Desktop\My Personal Diary\bk\My Personal Diary\My Personal Diary\bin\Debug\My Personal Diary.exe.config
+C:\Users\Lena\Desktop\My Personal Diary\bk\My Personal Diary\My Personal Diary\obj\Debug\My Personal Diary.exe
+C:\Users\Lena\Desktop\My Personal Diary\bk\My Personal Diary\My Personal Diary\obj\Debug\My Personal Diary.pdb
+C:\Users\Lena\Desktop\My Personal Diary\bk\My Personal Diary\My Personal Diary\bin\Debug\My Personal Diary.exe
+C:\Users\Lena\Desktop\My Personal Diary\bk\My Personal Diary\My Personal Diary\bin\Debug\My Personal Diary.pdb
+C:\Users\Lena\Desktop\My Personal Diary\bk\My Personal Diary\My Personal Diary\obj\Debug\My Personal Diary.csprojResolveAssemblyReference.cache
+C:\Users\Lena\Desktop\My Personal Diary\bk\My Personal Diary\My Personal Diary\obj\Debug\My_Personal_Diary.LogIn.resources
+C:\Users\Lena\Desktop\My Personal Diary\bk\My Personal Diary\My Personal Diary\obj\Debug\My_Personal_Diary.Properties.Resources.resources
+C:\Users\Lena\Desktop\My Personal Diary\bk\My Personal Diary\My Personal Diary\obj\Debug\My_Personal_Diary.UserDiary.resources
+C:\Users\Lena\Desktop\My Personal Diary\bk\My Personal Diary\My Personal Diary\obj\Debug\My Personal Diary.csproj.GenerateResource.Cache
