@@ -18,15 +18,18 @@ namespace My_Personal_Diary
         public String fileName;
         public bool isChanged;
         public List<Entry> entrys;
-       // public List<Reminder> reminders;
+        public List<Task> Tasks;
 
         public Document()
         {
             fileName = null;
             entrys = new List<Entry>();
+            Tasks = new List<Task>();
+            Tasks.Add(new Task());
             isChanged = true;
         }
-
+        
+        #region Entry methods
         public void addNewEntry(Entry e)
         {
             entrys.Add(e);
@@ -66,27 +69,49 @@ namespace My_Personal_Diary
             }
             return null;
         }
-        /*
-        public void addNewReminder(Reminder r)
+        #endregion
+        #region Task methods
+        public void addNewTask(Task t)
         {
-           reminders.Add(r);
+            Tasks.Add(new Task());
+            Tasks.Add(t);
+        }
+        public void findAndShowTasksDueThisDate(String date, ListBox list)
+        {
+            list.Items.Clear();
+            foreach (Task t in Tasks)
+            {
+                if (date == t.DueDate.ToShortDateString())
+                {
+                    list.Items.Add(t);
+                }
+            }
         }
 
-        public void deleteReminder(String title)
+        public void findAndShowAllTasks(ListBox list)
         {
-           Reminder temp = null;
-           foreach (Reminder r in reminders)
-           {
-               if (r.Title.Equals(title))
-               {
-                   temp = r;
-               }
-           }
-           reminders.Remove(temp);
+            list.Items.Clear();
+            foreach (Task t in Tasks)
+            {
+                 list.Items.Add(t);
+                
             }
-            */
+        }
+
+        public Task findTask(Task task)
+        {
+            foreach (Task t in Tasks)
+            {
+                if (t.DueDate.Equals(task.DueDate) && t.ID.Equals(task.ID))
+                    return t;
+            }
+            return null;
+        }
 
 
-        
+        #endregion
+
+
+
     }
 }

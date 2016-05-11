@@ -34,7 +34,8 @@ namespace My_Personal_Diary
 
         public UserDiary()
         {
-
+            doc = new Document();
+            
             editing = false;
             isSaved = true;
             int height = Screen.PrimaryScreen.Bounds.Height;
@@ -42,18 +43,19 @@ namespace My_Personal_Diary
             this.Height = height;
             this.Width = width;
             this.WindowState = FormWindowState.Maximized;
-            InitializeComponent();
-            monthCalendar.TitleBackColor = System.Drawing.Color.Blue;
 
+            InitializeComponent();
+            
             fillFontSize();
             lblPickDateListBox.Text = monthCalendar.SelectionStart.ToShortDateString();
-            doc = new Document();
+            
             fillFontFamily();
-            this.rtEditorDiary.ForeColor = cdColor.Color;
+            this.rtEditorDiary.ForeColor = Color.Salmon;
             fileName = null;
 
             lblDateNewEntry.Text = monthCalendar.TodayDate.ToShortDateString();
             doc.findAndShowEntrysOnThisDate(monthCalendar.TodayDate.ToShortDateString(), lbThisDateEntries);
+            doc.findAndShowAllTasks(lbTasks);
             hideComponents();
         }
         protected override CreateParams CreateParams
@@ -65,6 +67,7 @@ namespace My_Personal_Diary
                 return parms;
             }
         }
+
         private void toolStripButton1_Click(object sender, EventArgs e) // Bold funkcija
         {
             Font Bold = new Font(rtEditorDiary.SelectionFont.FontFamily, rtEditorDiary.SelectionFont.SizeInPoints, rtEditorDiary.Font.Style | FontStyle.Bold);
@@ -102,17 +105,19 @@ namespace My_Personal_Diary
 
         private void btnEntry_Click(object sender, EventArgs e)
         {
+            toggleEntryEditor();
             clearFields();
             enableEditor();
             showComponents();
             isSaved = false;
+            editing = false;
         }
 
         private void clearFields()
         {
             tbTitle.Text = "Diary Title";
             rtEditorDiary.Text = "";
-            cdColor.Color = Color.Blue;
+            cdColor.Color = Color.Yellow;
             rtEditorDiary.Font = new Font(rtEditorDiary.SelectionFont.FontFamily, rtEditorDiary.SelectionFont.SizeInPoints, rtEditorDiary.Font.Style | FontStyle.Regular);
 
         }
@@ -256,6 +261,8 @@ namespace My_Personal_Diary
 
         private void UserDiary_Load(object sender, EventArgs e)
         {
+            
+            pnlTaskEditor.Visible = false;
             freezeEditor();
             openFile(UserName);
             doc.findAndShowEntrysOnThisDate(monthCalendar.TodayDate.ToShortDateString(), lbThisDateEntries);
@@ -319,26 +326,23 @@ namespace My_Personal_Diary
             if (editing)
             {
                 en = doc.findEntry((Entry)lbThisDateEntries.SelectedItem);
-                en.Title = tbTitle.Text.ToString();
-                en.Text = rtEditorDiary.Rtf;
-                en.Date = monthCalendar.SelectionStart;
-                en.StringDate = monthCalendar.SelectionStart.ToShortDateString();
+                en.setEntry(tbTitle.Text.ToString(), monthCalendar.SelectionStart.ToShortDateString(), rtEditorDiary.Rtf, monthCalendar.SelectionStart);//changed
+
             }
             else
             {
                 en = new Entry();
-                en.Title = tbTitle.Text.ToString();
-                en.Text = rtEditorDiary.Rtf;
-                en.Date = monthCalendar.SelectionStart;
-                en.StringDate = monthCalendar.SelectionStart.ToShortDateString();
+                en.setEntry(tbTitle.Text.ToString(), monthCalendar.SelectionStart.ToShortDateString(), rtEditorDiary.Rtf, monthCalendar.SelectionStart);//changed
 
+                List<Entry> lst = doc.entrys;
                 doc.addNewEntry(en);
+                lst = doc.entrys;
                 lbThisDateEntries.Items.Add(en);
             }
             clearFields();
             freezeEditor();
             hideComponents();
-            isSaved = true;
+            isSaved = false;
         }
 
         private void btDeleteE_Click(object sender, EventArgs e)
@@ -415,6 +419,7 @@ namespace My_Personal_Diary
 
         private void btEditEntry_Click(object sender, EventArgs e)
         {
+            toggleEntryEditor();
             showComponents();
             enableEditor();
             editing = true;
@@ -423,6 +428,8 @@ namespace My_Personal_Diary
 
         private void lbThisDateEntries_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            toggleEntryEditor();    
             showComponents();
             freezeEditor();
             try
@@ -435,7 +442,64 @@ namespace My_Personal_Diary
             catch (Exception ex)
             { }
         }
+
+        private void lbTasks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            toggleTaskEditor();
+        }
+
+        private void btnReminder_Click(object sender, EventArgs e)
+        {
+            toggleTaskEditor();
+        }
+
+        private void toggleTaskEditor()
+        {
+            lbThisDateEntries.SelectedIndex = -1;
+            pnlDiaryEntryEditor.Visible = false;
+            pnlTaskEditor.Visible = true;
+        }
+        private void toggleEntryEditor()
+        {
+            lbTasks.SelectedIndex = -1;
+            pnlDiaryEntryEditor.Visible = true;
+            pnlTaskEditor.Visible = false;
+        }
+
+        private void btnSaveTask_Click(object sender, EventArgs e)
+        {
+            Task t;
+            if (tbTaskTitle.Text == "Task Title")
+            {
+                MessageBox.Show("Enter Title");
+                return;
+            }
+            if (editing)
+            {
+                t = doc.findTask((Task)lbTasks.SelectedItem);
+                t.setTask(tbTaskTitle.Text + monthCalendar.SelectionStart.ToShortDateString(), rtTaskDetail.Rtf, monthCalendar.SelectionStart);
+
+            }
+            else
+            {
+                t = new Task();
+                t.setTask(tbTaskTitle.Text + monthCalendar.SelectionStart.ToShortDateString(), rtTaskDetail.Rtf, monthCalendar.SelectionStart);
+                List<Task> tsk = doc.Tasks;
+                string details = t.Title;
+                string due = t.DueDate.ToShortDateString();
+                int aa = t.ID;
+                if (t != null)
+                {
+                    doc.Tasks.Add(t);
+                    lbTasks.Items.Add(t);
+                }
+            }
+            clearFields();
+            freezeEditor();
+            hideComponents();
+            isSaved = false;
+        }
     }
 
-    
+   
 }

@@ -69,6 +69,21 @@
         <Password>petar</Password>
         <DiaryFile>Petar.mpd</DiaryFile>
       </Users>
+      <Users diffgr:id="Users11" msdata:rowOrder="10" diffgr:hasChanges="inserted">
+        <UserName>Ifka</UserName>
+        <Password>ifka</Password>
+        <DiaryFile>Ifka.mpd</DiaryFile>
+      </Users>
+      <Users diffgr:id="Users12" msdata:rowOrder="11" diffgr:hasChanges="inserted">
+        <UserName>nekoj</UserName>
+        <Password>n</Password>
+        <DiaryFile>nekoj.mpd</DiaryFile>
+      </Users>
+      <Users diffgr:id="Users13" msdata:rowOrder="12" diffgr:hasChanges="inserted">
+        <UserName>novn</UserName>
+        <Password>n</Password>
+        <DiaryFile>novn.mpd</DiaryFile>
+      </Users>
     </NewDataSet>
   </diffgr:diffgram>
 </DataSet>

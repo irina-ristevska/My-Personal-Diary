@@ -15,8 +15,14 @@ namespace My_Personal_Diary
         public String StringDate { get; set; }
         public String Text { get; set; }
         public int ID { get; private set; }
-       
 
+        public void setEntry(string title, string dt, string txt, DateTime time)
+        {
+            Title = title;
+            StringDate = dt;
+            Text = txt;
+            Date = time;
+        }
 
         public Entry()
         {

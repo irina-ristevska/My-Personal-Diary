@@ -63,6 +63,26 @@ namespace My_Personal_Diary.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap access_time_32 {
+            get {
+                object obj = ResourceManager.GetObject("access-time-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap approved_speech_bubble_128 {
+            get {
+                object obj = ResourceManager.GetObject("approved_speech-bubble-128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bold {
             get {
                 object obj = ResourceManager.GetObject("bold", resourceCulture);
@@ -136,6 +156,16 @@ namespace My_Personal_Diary.Properties {
         internal static System.Drawing.Bitmap Pass_Icon {
             get {
                 object obj = ResourceManager.GetObject("Pass Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap spinner_32 {
+            get {
+                object obj = ResourceManager.GetObject("spinner-32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
