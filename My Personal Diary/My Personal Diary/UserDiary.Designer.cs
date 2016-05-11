@@ -240,6 +240,7 @@
             this.lbThisDateEntries.Name = "lbThisDateEntries";
             this.lbThisDateEntries.Size = new System.Drawing.Size(242, 146);
             this.lbThisDateEntries.TabIndex = 3;
+            this.lbThisDateEntries.SelectedIndexChanged += new System.EventHandler(this.lbThisDateEntries_SelectedIndexChanged);
             this.lbThisDateEntries.SelectedValueChanged += new System.EventHandler(this.lbThisDateEntries_SelectedValueChanged);
             // 
             // lblHelloMessage

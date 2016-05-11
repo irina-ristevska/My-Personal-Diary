@@ -400,6 +400,8 @@ namespace My_Personal_Diary
 
         private void lbThisDateEntries_SelectedValueChanged(object sender, EventArgs e)
         {
+            showComponents();
+            freezeEditor();
             try
             {
                 Entry en = (Entry)lbThisDateEntries.SelectedItem;
@@ -417,6 +419,21 @@ namespace My_Personal_Diary
             enableEditor();
             editing = true;
             isSaved = false;
+        }
+
+        private void lbThisDateEntries_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            showComponents();
+            freezeEditor();
+            try
+            {
+                Entry en = (Entry)lbThisDateEntries.SelectedItem;
+                tbTitle.Text = en.Title;
+                rtEditorDiary.Rtf = en.Text;
+                freezeEditor();
+            }
+            catch (Exception ex)
+            { }
         }
     }
 
