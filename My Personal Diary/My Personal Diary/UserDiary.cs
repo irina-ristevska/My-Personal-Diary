@@ -304,7 +304,7 @@ namespace My_Personal_Diary
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
                 dlg.Title = "Open Image";
-                dlg.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+                dlg.Filter = "All Images|*.BMP;*.JPG;*.JPEG;*.GIF;*.PNG|JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
 
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
@@ -350,7 +350,7 @@ namespace My_Personal_Diary
 
         private void btDeleteE_Click(object sender, EventArgs e)
         {
-            try
+            if (lbThisDateEntries.SelectedIndex != -1)
             {
                 Entry en = (Entry)lbThisDateEntries.SelectedItem;
                 DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete the selected entry?",
@@ -363,9 +363,9 @@ namespace My_Personal_Diary
                 }
                 isSaved = false;
             }
-            catch(Exception ex)
+            else
             {
-                MessageBox.Show("Select the entry for deleting !");
+                MessageBox.Show("Select entry for deleting", "Select");
             }
         }
 
@@ -422,10 +422,17 @@ namespace My_Personal_Diary
 
         private void btEditEntry_Click(object sender, EventArgs e)
         {
-            showComponents();
-            enableEditor();
-            editing = true;
-            isSaved = false;
+            if (lbThisDateEntries.SelectedIndex != -1)
+            {
+                showComponents();
+                enableEditor();
+                editing = true;
+                isSaved = false;
+            }
+            else
+            {
+                MessageBox.Show("Select entry for editing", "Select");
+            }
         }
 
         private void lbThisDateEntries_SelectedIndexChanged(object sender, EventArgs e)

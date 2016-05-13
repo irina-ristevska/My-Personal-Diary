@@ -44,6 +44,7 @@
             this.lblHelloMessage = new System.Windows.Forms.Label();
             this.pbUserIcon = new System.Windows.Forms.PictureBox();
             this.monthCalendar = new System.Windows.Forms.MonthCalendar();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pbCalendarIcon = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
@@ -69,16 +70,15 @@
             this.lblDateNewEntry = new System.Windows.Forms.Label();
             this.cdColor = new System.Windows.Forms.ColorDialog();
             this.ttTips = new System.Windows.Forms.ToolTip(this.components);
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.panel1.SuspendLayout();
             this.pnlListBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbUserIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCalendarIcon)).BeginInit();
             this.toolStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlTop
@@ -278,6 +278,15 @@
             this.ttTips.SetToolTip(this.monthCalendar, "Click to choose a date");
             this.monthCalendar.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_DateChanged);
             this.monthCalendar.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_DateSelected);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.White;
+            this.pictureBox4.Location = new System.Drawing.Point(15, 131);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(249, 182);
+            this.pictureBox4.TabIndex = 9;
+            this.pictureBox4.TabStop = false;
             // 
             // panel3
             // 
@@ -486,7 +495,7 @@
             this.rtEditorDiary.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtEditorDiary.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtEditorDiary.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.rtEditorDiary.Location = new System.Drawing.Point(18, 137);
+            this.rtEditorDiary.Location = new System.Drawing.Point(18, 142);
             this.rtEditorDiary.Name = "rtEditorDiary";
             this.rtEditorDiary.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.rtEditorDiary.Size = new System.Drawing.Size(761, 401);
@@ -523,15 +532,6 @@
             // 
             this.cdColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.White;
-            this.pictureBox4.Location = new System.Drawing.Point(15, 131);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(249, 182);
-            this.pictureBox4.TabIndex = 9;
-            this.pictureBox4.TabStop = false;
-            // 
             // UserDiary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -551,12 +551,12 @@
             this.pnlListBox.ResumeLayout(false);
             this.pnlListBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbUserIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCalendarIcon)).EndInit();
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
 
         }
