@@ -107,7 +107,7 @@
             this.btnSave.Size = new System.Drawing.Size(133, 34);
             this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Save All ";
-            this.ttTips.SetToolTip(this.btnSave, "Save all the changes made to you Diary file");
+            this.ttTips.SetToolTip(this.btnSave, "Save all the changes made to your Diary file");
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -234,6 +234,7 @@
             this.lbThisDateEntries.Name = "lbThisDateEntries";
             this.lbThisDateEntries.Size = new System.Drawing.Size(250, 162);
             this.lbThisDateEntries.TabIndex = 3;
+            this.ttTips.SetToolTip(this.lbThisDateEntries, "Click to select an Entry and view it in the editor");
             this.lbThisDateEntries.SelectedIndexChanged += new System.EventHandler(this.lbThisDateEntries_SelectedIndexChanged);
             this.lbThisDateEntries.SelectedValueChanged += new System.EventHandler(this.lbThisDateEntries_SelectedValueChanged);
             // 
@@ -262,7 +263,6 @@
             this.pbUserIcon.TabStop = false;
             this.ttTips.SetToolTip(this.pbUserIcon, "Click to change the User Icon");
             this.pbUserIcon.Click += new System.EventHandler(this.pbUserIcon_Click);
-            this.pbUserIcon.MouseHover += new System.EventHandler(this.pbUserIcon_MouseHover);
             // 
             // monthCalendar
             // 
@@ -425,7 +425,7 @@
             this.tsbFontColor.Size = new System.Drawing.Size(23, 37);
             this.tsbFontColor.Text = "Change the color of the text";
             this.tsbFontColor.Click += new System.EventHandler(this.tsbFontColor_Click);
-            this.tsbFontColor.EnabledChanged += new System.EventHandler(this.tsbFontColor_EnabledChanged);
+         
             // 
             // tsbFontHighLighter
             // 
@@ -494,7 +494,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtEditorDiary.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtEditorDiary.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtEditorDiary.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.rtEditorDiary.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(97)))), ((int)(((byte)(113)))));
             this.rtEditorDiary.Location = new System.Drawing.Point(18, 142);
             this.rtEditorDiary.Name = "rtEditorDiary";
             this.rtEditorDiary.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
@@ -541,6 +541,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.pnlTop);
+            this.MinimumSize = new System.Drawing.Size(1082, 682);
             this.Name = "UserDiary";
             this.Text = "UserDiary";
             this.Load += new System.EventHandler(this.UserDiary_Load);

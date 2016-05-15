@@ -211,12 +211,13 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(94, 587);
+            this.label2.Location = new System.Drawing.Point(99, 586);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(292, 13);
-            this.label2.TabIndex = 3;
+            this.label2.TabIndex = 8;
             this.label2.Text = "-- VP Project by Irina Ristevska and Maja Milosheska 2016 --";
             // 
             // LogIn
@@ -229,6 +230,7 @@
             this.Controls.Add(this.pnlMessage);
             this.Controls.Add(this.pbLogo);
             this.Controls.Add(this.pnlBox);
+            this.MinimumSize = new System.Drawing.Size(500, 651);
             this.Name = "LogIn";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Log In";

@@ -25,34 +25,27 @@ namespace My_Personal_Diary
         {
             get; set;
         }
+
         string UserName { get; set; }
         public bool isChanged { get; private set; }
         public string fileName { get; private set; }
 
-        public void setDiaryFile(string url, string user)
-        { DiaryFile = url; UserName = user; }
+        public void setDiaryFile(string url, string user)  { DiaryFile = url; UserName = user; }
 
         public UserDiary()
         {
-
             editing = false;
             isSaved = true;
-            int height = Screen.PrimaryScreen.Bounds.Height;
-            int width = Screen.PrimaryScreen.Bounds.Width;
-            this.Height = height;
-            this.Width = width;
             this.WindowState = FormWindowState.Maximized;
             InitializeComponent();
             
             fillFontSize();
-            
-            doc = new Document();
             fillFontFamily();
-            this.rtEditorDiary.ForeColor = Color.Salmon;
+           
+       
             fileName = null;
 
             lblDateNewEntry.Text = "Date: " + monthCalendar.TodayDate.ToShortDateString();
-            doc.findAndShowEntrysOnThisDate(monthCalendar.TodayDate.ToShortDateString(), lbThisDateEntries);
             hideComponents();
         }
         protected override CreateParams CreateParams
@@ -86,7 +79,7 @@ namespace My_Personal_Diary
 
             ddlSizePick.SelectedIndex = 3;
 
-        }
+        } //fill dropdown list on toolstrip with font sizes
 
         public void helloMessage()
         {
@@ -96,28 +89,28 @@ namespace My_Personal_Diary
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-           saveFile();
+            saveFile();
             isSaved = true;
         }
 
         private void btnEntry_Click(object sender, EventArgs e)
         {
+            monthCalendar.Enabled = true;
             lbThisDateEntries.SelectedIndex = -1;
             clearFields();
             enableEditor();
             showComponents();
             isSaved = false;
             editing = false;
-        }
+        } //New entry
 
         private void clearFields()
         {
             tbTitle.Text = "Diary Title";
             rtEditorDiary.Text = "";
-            cdColor.Color = Color.Yellow;
             rtEditorDiary.Font = new Font(rtEditorDiary.SelectionFont.FontFamily, rtEditorDiary.SelectionFont.SizeInPoints, rtEditorDiary.Font.Style | FontStyle.Regular);
 
-        }
+        } //Clear the editor
         private void tsItalic_Click(object sender, EventArgs e)
         {
             Font Italic = new Font(rtEditorDiary.SelectionFont.FontFamily, rtEditorDiary.SelectionFont.SizeInPoints, rtEditorDiary.Font.Style | FontStyle.Italic);
@@ -131,7 +124,7 @@ namespace My_Personal_Diary
             {
                 rtEditorDiary.SelectionFont = Italic;
             }
-        }
+        } // Italic function
 
         private void tsUnderline_Click(object sender, EventArgs e)
         {
@@ -146,7 +139,7 @@ namespace My_Personal_Diary
             {
                 rtEditorDiary.SelectionFont = Underline;
             }
-        }
+        }// Underline function
 
         private void tbTitle_Click(object sender, EventArgs e)
         {
@@ -180,7 +173,7 @@ namespace My_Personal_Diary
                 ddlFontPicker.Items.Add(fontFamily.Name.ToString());
                 ddlFontPicker.SelectedIndex = 0;
             }
-        }
+        } //Fill the dropdown list with available font families
 
         private void ddlFontPicker_SelectedIndexChanged(object sender, EventArgs e) // fixed
         {
@@ -188,7 +181,7 @@ namespace My_Personal_Diary
             FontFamily ff = new FontFamily(familyName);
             Font f = new Font(ff, rtEditorDiary.SelectionFont.Size, rtEditorDiary.SelectionFont.Style);
             rtEditorDiary.SelectionFont = f;
-        }
+        } // Pick a font
 
         private void ddlSizePick_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -197,19 +190,16 @@ namespace My_Personal_Diary
             float.TryParse(ddlSizePick.SelectedItem.ToString(), out newSize);
             Font newFont = new Font(rtEditorDiary.SelectionFont.Name, newSize, rtEditorDiary.SelectionFont.Style);
             rtEditorDiary.SelectionFont = newFont;
-        }
+        } //Pick a font size
 
         private void tsbFontColor_Click(object sender, EventArgs e)
         {
             cdColor.ShowDialog();
             this.rtEditorDiary.SelectionColor = cdColor.Color;
 
-        }
+        } //Pick font color
 
-        private void tsbFontColor_EnabledChanged(object sender, EventArgs e)
-        {
-            this.rtEditorDiary.ForeColor = cdColor.Color;
-        }
+        
 
         /// <summary>
         /// Save the document
@@ -260,28 +250,30 @@ namespace My_Personal_Diary
         {
             lblPickDateListBox.Text = monthCalendar.SelectionStart.ToShortDateString();
             freezeEditor();
+            doc = new Document();
             openFile(DiaryFile);
             doc.findAndShowEntrysOnThisDate(monthCalendar.TodayDate.ToShortDateString(), lbThisDateEntries);
-            if(doc.image!=null)
+
+            if (doc.image!=null)
                 pbUserIcon.Image = doc.image;
            
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {
+            
+            
             if (!isSaved)
             {
                 DialogResult dialogResult = MessageBox.Show("Are you sure you want to discard all the changes done?",
                 "Log out", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    DialogResult = DialogResult.OK;
                     this.Close();
                 }
             }
             else
             {
-                DialogResult = DialogResult.OK;
                 this.Close();
             }
                
@@ -292,12 +284,9 @@ namespace My_Personal_Diary
         {
             cdColor.ShowDialog();
             this.rtEditorDiary.SelectionBackColor = cdColor.Color;
-        }
+        } //Pick a highlighter color
 
-        private void pbUserIcon_MouseHover(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void pbUserIcon_Click(object sender, EventArgs e)
         {
@@ -308,22 +297,20 @@ namespace My_Personal_Diary
 
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
-                    PictureBox PictureBox1 = new PictureBox();
-
-                    // Create a new Bitmap object from the picture file on disk,
-                    // and assign that to the PictureBox.Image property
                     pbUserIcon.Image = new Bitmap(dlg.FileName);
                     doc.image = new Bitmap(dlg.FileName);
                 }
             }
-        }
+        } // change user picture icon
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+           
+            monthCalendar.Enabled = true;
             Entry en;
             if (tbTitle.Text == "Diary Title")
             {
-                MessageBox.Show("Enter Title");
+                MessageBox.Show("Enter a Title", "Be more creative!");
                 return;
             }
             if (editing)
@@ -342,11 +329,13 @@ namespace My_Personal_Diary
                 lbThisDateEntries.Items.Add(en);
             }
 
+            doc.findAndShowEntrysOnThisDate(lblPickDateListBox.Text, lbThisDateEntries);
+            lbThisDateEntries.SelectedIndex = -1;
             clearFields();
             freezeEditor();
             hideComponents();
             isSaved = false;
-        }
+        } //Close the entry and save it to the list
 
         private void btDeleteE_Click(object sender, EventArgs e)
         {
@@ -367,20 +356,21 @@ namespace My_Personal_Diary
             {
                 MessageBox.Show("Select entry for deleting", "Select");
             }
-        }
+        } // delete entry
 
         private void btEditE_Click(object sender, EventArgs e)
         {
             Entry en = (Entry)lbThisDateEntries.SelectedItem;
 
-        }
+        } 
 
-
+        #region Editor state 
         private void freezeEditor()
         {
             btnClose.Enabled = false;
             rtEditorDiary.Enabled = false;
             tbTitle.Enabled = false;
+            
 
         }
 
@@ -389,6 +379,7 @@ namespace My_Personal_Diary
             btnClose.Visible = true;
             rtEditorDiary.Enabled = true;
             tbTitle.Enabled = true;
+            
         }
 
         private void hideComponents()
@@ -404,6 +395,7 @@ namespace My_Personal_Diary
             rtEditorDiary.Visible = true;
             tbTitle.Visible = true;
         }
+        #endregion
 
         private void lbThisDateEntries_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -426,6 +418,7 @@ namespace My_Personal_Diary
             {
                 showComponents();
                 enableEditor();
+                monthCalendar.Enabled = false;
                 editing = true;
                 isSaved = false;
             }
@@ -433,7 +426,7 @@ namespace My_Personal_Diary
             {
                 MessageBox.Show("Select entry for editing", "Select");
             }
-        }
+        } // Edit the entry
 
         private void lbThisDateEntries_SelectedIndexChanged(object sender, EventArgs e)
         {

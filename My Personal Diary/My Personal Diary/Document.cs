@@ -25,6 +25,7 @@ namespace My_Personal_Diary
             fileName = null;
             entrys = new List<Entry>();
             isChanged = true;
+            image = null;
         }
         
         #region Entry methods

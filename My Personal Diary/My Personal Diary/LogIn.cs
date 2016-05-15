@@ -20,7 +20,7 @@ namespace My_Personal_Diary
             UserBase = new UserBaseController();
             Diary = new UserDiary();
             UserBase.LoadXML();
-            // loadiranje na bazata so korisnici (dokolku ne postoi fajlot, se kreira)
+            // Loading XML base (if the file doesnt exist or is corruped the base is created)
            
             InitializeComponent();
 
@@ -30,12 +30,12 @@ namespace My_Personal_Diary
         private void pnlUsername_Click(object sender, EventArgs e)
         {
             tbUsername.Focus();
-        }
+        } //focus on tbUsername if the panel around it is clicked
 
         private void pnlPassword_Click(object sender, EventArgs e)
         {
             tbPassword.Focus();
-        }
+        } //focus on tbPassword if the panel around it is clicked
 
         private void tbUsername_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -43,7 +43,7 @@ namespace My_Personal_Diary
             {
                 e.Handled = true;
             }
-        }
+        } // Numbers and letters allowed only
 
         private void tbPassword_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -56,7 +56,7 @@ namespace My_Personal_Diary
                 LogInFunc();
             }
 
-        }
+        } // Numbers and letters allowed only
 
         private void btnSignUp_Click(object sender, EventArgs e)
         {
@@ -87,12 +87,12 @@ namespace My_Personal_Diary
             }
             pnlMessage.Visible = true;
 
-        }
+        } //Create a new user in XML base and load UserDiary
 
         private void btnLogIn_Click(object sender, EventArgs e)
         {
             LogInFunc();
-        }
+        } 
 
         private void LogInFunc()
         {
@@ -119,7 +119,7 @@ namespace My_Personal_Diary
                 lblMessage.Text = "Invalid username or password";
             }
             pnlMessage.Visible = true;
-        }
+        } //LogIn with existing user
 
         private void showDiaryDialog()
         {
@@ -127,18 +127,8 @@ namespace My_Personal_Diary
             string url = UserBase.GetDiaryFile();
             Diary.setDiaryFile(url, username);
             Diary.helloMessage();
-            this.Hide();
-            if (Diary.ShowDialog() == DialogResult.OK)
-            {
-                lblMessage.Text = "Succeffully logged out!";
-                tbPassword.Text = "";
-                tbUsername.Text = "Enter username";
-                
-                tbUsername.Focus();
-                
-                this.Show();
-
-            }
+            Diary.ShowDialog();
+            this.Close();
             
         }
 
