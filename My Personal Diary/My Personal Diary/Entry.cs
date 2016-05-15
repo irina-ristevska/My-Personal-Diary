@@ -12,14 +12,12 @@ namespace My_Personal_Diary
     {
         public string Title { get; set; }
         public DateTime Date { get; set; }
-        public String StringDate { get; set; }
         public String Text { get; set; }
         public int ID { get; private set; }
 
-        public void setEntry(string title, string dt, string txt, DateTime time)
+        public void setEntry(string title,  string txt, DateTime time)
         {
             Title = title;
-            StringDate = dt;
             Text = txt;
             Date = time;
         }

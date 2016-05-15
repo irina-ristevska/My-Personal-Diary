@@ -316,13 +316,13 @@ namespace My_Personal_Diary
             if (editing)
             {
                 en = doc.findEntry((Entry)lbThisDateEntries.SelectedItem);
-                en.setEntry(tbTitle.Text.ToString(), monthCalendar.SelectionStart.ToShortDateString(), rtEditorDiary.Rtf, monthCalendar.SelectionStart);//changed
+                en.setEntry(tbTitle.Text.ToString(), rtEditorDiary.Rtf, monthCalendar.SelectionStart);//changed
 
             }
             else
             {
                 en = new Entry();
-                en.setEntry(tbTitle.Text.ToString(), monthCalendar.SelectionStart.ToShortDateString(), rtEditorDiary.Rtf, monthCalendar.SelectionStart);//changed
+                en.setEntry(tbTitle.Text.ToString(), rtEditorDiary.Rtf, monthCalendar.SelectionStart);//changed
 
 
                 doc.addNewEntry(en);
